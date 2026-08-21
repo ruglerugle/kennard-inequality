@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1c2947">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>STAGE3 運動量をつかまえる ― 不確定性原理を証明する</title>
+<meta name="description" content="運動量は波の細かさに隠れている。波形の傾きを読む「微分」を道具にすると、平面波から運動量 p＝ℏk がそのまま取り出せる。運動量演算子 −iℏ d/dx が発見される瞬間をたどるステージ。">
+<link rel="canonical" href="https://ruglerugle.github.io/kennard-inequality/stage3.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="不確定性原理を証明する">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="STAGE3 運動量をつかまえる ― 不確定性原理を証明する">
+<meta property="og:description" content="波形の傾きを読む「微分」が、運動量の検出器になる瞬間を目撃する。">
+<meta property="og:url" content="https://ruglerugle.github.io/kennard-inequality/stage3.html">
+<meta property="og:image" content="https://ruglerugle.github.io/kennard-inequality/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="design-system.css">
+<style>
+  .kq-svg .wave{fill:none;stroke:var(--gold);stroke-width:2}
+  .kq-svg .base{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3}
+  .kq-svg .tang{stroke:#b5504a;stroke-width:2}
+  .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
+  .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">📐</a> <span>不確定性原理を証明する</span></div>
+      <div class="brand-sub">STAGE 3 ― 運動量をつかまえる ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">STAGE 3</span><span class="chapter-title">運動量をつかまえる</span>
+        <div class="chapter-sub">微分という検出器</div>
+      </div>
+
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">微分を「傾きを読む道具」として手に入れ、運動量が −iℏ d/dx という演算で波から取り出せる理由を説明できるようになろう。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">前のステージの宿題からですね。|ψ|² のグラフには位置の確率しか写っていないのに、運動量のばらつき Δp をどう計算するのか。……手がかりは、あの式しか思い当たりません。p＝h/λ。運動量は波長で決まる。ということは、運動量の情報は「波の細かさ」に隠れているはずです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その式を最初に信じた男の話から始めよう。1924年、フランスの大学院生ド・ブロイは、博士論文でとんでもない賭けをした。「光は波だと思われていたのに、実は粒の性質も持っていた。それなら<strong>逆に、粒だと思われている電子は、波の性質を持つのではないか</strong>」。実験の証拠はまだ何もない。あったのは<strong>自然は対称なはずだ</strong>という直感だけ。審査員は困り果ててアインシュタインに意見を求め、彼は「一見突飛だが、まったく健全だ」と絶賛した。3年後、電子の波は本当に実験で見つかって、ド・ブロイはノーベル賞を受けた。公式の発見は、こんなふうに「類推」から生まれることがあるんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">証拠より先に対称性を信じたんですね。……それで、波の細かさから運動量を「計算で」取り出すには、どうすればいいんでしょう。グラフを目で見て波長を測るわけにはいきませんよね。式で扱える方法が要ります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこで今日の新しい道具、<strong>微分</strong>だよ。これも正体は素朴で、「グラフの<strong>ある点での傾き</strong>を読む」道具なんだ。曲線でも、1点のまわりをどんどん拡大していけば、ほとんどまっすぐな線に見えてくる。そのまっすぐな線の傾きが、その点での微分の値。関数 ψ(x) の各点での傾きを並べたものを ψ′(x) や dψ/dx と書く。きみは「速さ＝距離÷時間」を知っているね。あれは実は、位置のグラフの<strong>傾き</strong>を読んでいるんだ。グラフが急なほど、短い時間で大きく進む――つまり速い。微分は「変化の速さを読む道具」と言ってもいい。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">見えてきました。波長の短い波は、山から谷まで一気に駆け下りるから、<strong>波形の傾きが急</strong>になります。波長の長い波はなだらか。つまり「波の細かさ」は「傾きの大きさ」に現れる。傾きを読む道具が微分なら、微分こそが運動量の検出器になるはずです！</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" id="slope-svg" viewBox="0 0 320 200" width="100%" role="img" aria-label="波長の長い波はなだらかで傾きが小さく、波長の短い波は急で傾きが大きいことを比べる図">
+          <line class="base" x1="15" y1="55" x2="305" y2="55"></line>
+          <path class="wave" id="wave-long" d=""></path>
+          <line class="base" x1="15" y1="150" x2="305" y2="150"></line>
+          <path class="wave" id="wave-short" d=""></path>
+          <text class="strong" x="18" y="16">波長が長い（p 小）→ 傾きなだらか</text>
+          <text class="strong" x="18" y="112">波長が短い（p 大）→ 傾きが急</text>
+        </svg>
+        <div class="diagram-caption">同じ高さの波でも、波長が短いほど波形の傾きは急になる。運動量 p＝h/λ の情報は「波形の傾き」に刻まれている――だから傾きを読む微分が、運動量を取り出す道具になる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">では、その直感を精密な式にしよう。運動量がぴったり決まった波――量子力学ではそれを<strong>平面波 ψ(x)＝e^(ikx)</strong> と書く。ここで k は「波数」といって、波長 λ との関係は k＝2π/λ。波長が短いほど k は大きい。p＝h/λ を k で書き直すと p＝ℏk になる（ℏ＝h/2π だからね）。e^(ikx) という書き方は大丈夫かな。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">複素数の教室で習ったオイラーの公式ですね。整理し直すと――e^(iθ)＝cos θ＋i sin θ。角度 θ を増やすと、複素数の平面の上で単位円をぐるぐる回る「回転する数」でした。だから e^(ikx) は、x が進むにつれて回転する波。実部だけ見ればコサインの波で、確かに波長 2π/k で繰り返します。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">完璧だ。そして e^(ikx) には、微分すると自分自身の ik 倍になる、という美しい性質がある（指数関数の微分の規則だよ。傾きが自分の高さに比例する、成長する関数の性質だ）。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">平面波の微分： d/dx e^(ikx) ＝ ik e^(ikx)</span>
+        <span class="step">−iℏ を掛けると： −iℏ × ik e^(ikx) ＝ ℏk e^(ikx) ＝ <strong>p × e^(ikx)</strong>　（−i×i＝1 を使った）</span>
+        <span class="step">つまり演算 −iℏ d/dx は、波の形を変えずに、運動量の値 p を前に取り出す</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">波はそのままで、運動量の値だけが係数として出てくる……。まるで、波に「あなたの運動量は？」と質問して、答えを前に書いてもらうような操作ですね。−i を掛けているのは、微分で出てきた余計な i を打ち消すため、ℏ は k を p の単位に直すため。1つずつ意味があります。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その比喩はいいね。この「質問する操作」を<strong>運動量演算子</strong>と呼ぶ。1925年から26年にかけて、ハイゼンベルクやシュレーディンガーたちが量子力学を建設したとき、一番の発明がこれだった――<strong>物理量を「数」ではなく「操作」で表す</strong>という発想の転換だよ。位置はどうかというと、実はもう使っている。⟨x⟩＝∫ψ* x ψ dx という式は、「ψ* と ψ で挟んで、間に x を掛けて、積分する」というサンドイッチの形だ。運動量の平均も同じサンドイッチで、間に挟むものを x から −iℏ d/dx に替えるだけなんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">2乗の平均 ⟨p²⟩ はどうなりますか？ 位置のときは x を2回掛けて ∫ψ* x² ψ dx でしたから……操作の場合は、<strong>2回続けて施す</strong>のでしょうか。微分を2回、係数も2回分。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その類推で正しいよ。微分を2回施したものを ψ″ と書くと、(−iℏ)² ＝ −ℏ² だから、⟨p²⟩ ＝ −ℏ² ∫ψ* ψ″ dx。平面波なら確かめられる：1回目で p が出て、2回目でもう1つ p が出るから、ちゃんと p² が返ってくる。一般の波は平面波の重ね合わせだから、この規則がそのまま通用するんだ。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">運動量の平均： ⟨p⟩ ＝ ∫ ψ* (−iℏ ψ′) dx　（サンドイッチの具を −iℏ d/dx に）</span>
+        <span class="step">運動量の2乗平均： ⟨p²⟩ ＝ ∫ ψ* (−iℏ)² ψ″ dx ＝ −ℏ² ∫ ψ* ψ″ dx</span>
+        <span class="step">⟨p⟩＝0 と下ごしらえ済みなので： (Δp)² ＝ ⟨p²⟩　（分散＝2乗の平均）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">これで Δx も Δp も、波動関数から計算する式が手に入った。ただ、(Δp)² の式には ψ″ という2階微分が入っていて、このままでは扱いにくい。次のステージでは、19世紀の解析学の職人芸「部分積分」を使って、この式をもっと美しい形に磨き上げる。証明の弾丸を2発、そこで込めることになるよ。</div>
+        </div>
+      </div>
+
+      <div class="quiz-head">確認クイズ</div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 平面波 e^(ikx) に演算 −iℏ d/dx を施すと、何が起きる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">波が打ち消されて0になる</button>
+          <button class="choice-btn">波の形はそのまま、運動量の値 p＝ℏk が係数として前に出てくる</button>
+          <button class="choice-btn">波長が半分の波に変わる</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ d/dx e^(ikx)＝ik e^(ikx) に −iℏ を掛けると ℏk e^(ikx)＝p e^(ikx)。波に「運動量は？」と質問して答えを書いてもらう操作――これが運動量演算子だ。</div>
+      </div>
+
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 波長が短い波ほど、運動量は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">大きい（p＝h/λ なので波長と運動量は反比例）</button>
+          <button class="choice-btn">小さい</button>
+          <button class="choice-btn">波長と運動量は無関係</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ド・ブロイの関係 p＝h/λ。波長が短い＝波形が細かい＝傾きが急、が高い運動量に対応する。</div>
+      </div>
+
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 「微分」が運動量の検出器になる理由として正しいのは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">微分すると波の面積が求まるから</button>
+          <button class="choice-btn">微分すると波の高さの最大値が分かるから</button>
+          <button class="choice-btn">運動量は波の細かさ（波長）に対応し、微分は波形の傾き＝細かさを読み取る道具だから</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 波長の短い波ほど傾きが急。傾きを読む微分は、波に刻まれた「細かさ＝運動量」の情報を取り出せる。この直感は次のステージの補題「(Δp)²＝ℏ²∫|ψ′|²dx」で完璧な形になる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← トップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="js/progress.js"></script>
+<script>
+  // 波長の長い波・短い波を描く（静止画）
+  (function () {
+    function makePath(yc, amp, wavelen, x0, x1) {
+      var k = 2 * Math.PI / wavelen;
+      var d = "M" + x0 + " " + (yc - amp * Math.sin(k * x0)).toFixed(1);
+      for (var x = x0 + 2; x <= x1; x += 2) {
+        d += " L" + x + " " + (yc - amp * Math.sin(k * x)).toFixed(1);
+      }
+      return d;
+    }
+    var wl = document.getElementById("wave-long");
+    var ws = document.getElementById("wave-short");
+    if (wl) wl.setAttribute("d", makePath(55, 22, 150, 15, 305));
+    if (ws) ws.setAttribute("d", makePath(150, 22, 34, 15, 305));
+  })();
+</script>
+<script>KQ.initStagePage(3);</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1c2947">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>STAGE2 確率の波と積分 ― 不確定性原理を証明する</title>
+<meta name="description" content="|ψ|² は確率の濃さ。積分の正体は「細かく切って足すだけ」の素朴な足し算だ。ボルンの確率解釈と積分を道具に、平均 ⟨x⟩ とばらつき Δx を波動関数から計算する式を組み立てる。">
+<link rel="canonical" href="https://ruglerugle.github.io/kennard-inequality/stage2.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="不確定性原理を証明する">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="STAGE2 確率の波と積分 ― 不確定性原理を証明する">
+<meta property="og:description" content="積分の正体は「細かく切って足すだけ」。⟨x⟩ と Δx を波動関数から計算する式を組み立てる。">
+<meta property="og:url" content="https://ruglerugle.github.io/kennard-inequality/stage2.html">
+<meta property="og:image" content="https://ruglerugle.github.io/kennard-inequality/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="design-system.css">
+<style>
+  .kq-svg .wave{fill:none;stroke:var(--gold);stroke-width:2}
+  .kq-svg .base{stroke:var(--line);stroke-width:1}
+  .kq-svg .bar{fill:rgba(217,164,65,.35);stroke:var(--gold-dark);stroke-width:.8}
+  .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
+  .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">📐</a> <span>不確定性原理を証明する</span></div>
+      <div class="brand-sub">STAGE 2 ― 確率の波と積分 ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">STAGE 2</span><span class="chapter-title">確率の波と積分</span>
+        <div class="chapter-sub">平均と Δx を式で書く</div>
+      </div>
+
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">積分を「細かく切って足す」道具として手に入れ、波動関数 ψ から平均 ⟨x⟩ とばらつき Δx を計算する式を書けるようになろう。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">Δx を波動関数 ψ から計算するには、まず ψ と確率の関係をおさらいしておこう。ψ(x) は場所 x ごとに値を持つ関数で、値は複素数だ。そして物理的な意味を持つのは、その<strong>絶対値の2乗 |ψ(x)|²</strong> ――これが「その場所で電子が見つかりやすさの濃さ」、つまり<strong>確率密度</strong>を表す。山が高い場所ほど見つかりやすい。これがボルンの確率解釈だったね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">復習させてください。複素数 z＝a＋bi の絶対値の2乗は |z|²＝a²＋b² で、これは必ず0以上の実数になるんでしたよね。だから確率――0以上の実数――の役が務まる。複素数のままでは「確率が 3＋2i」なんて意味不明ですから、2乗して実数にするのは理にかなっています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">完璧なおさらいだね。ついでに記号を1つ導入しておこう。z＝a＋bi の虚数部分の符号を反転した z*＝a−bi を<strong>複素共役（きょうやく）</strong>と呼ぶ。掛け算してみると z·z*＝(a＋bi)(a−bi)＝a²＋b²、つまり <strong>|z|²＝z·z*</strong> だ。後でこの書き換えが大活躍する。……ところでこの「2乗する」という規則、どう発見されたか知っているかな。1926年、ボルンは電子の衝突を計算した論文で「確率は ψ に比例する」と<strong>書いてしまった</strong>。そして印刷直前に気づいて、<strong>脚注</strong>に「より正確な考察によれば、確率は ψ の2乗に比例する」と書き足したんだ。量子力学の心臓部が、脚注で生まれた瞬間だよ。この仕事でボルンは後にノーベル賞を受けている。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">脚注で！ 教科書だと最初から堂々と書いてあるのに、発見の現場はそんなに際どいものなんですね。……それで、確率の「濃さ」が |ψ(x)|² だとして、そこから平均やばらつきをどう計算するんですか？ 前のステージの例では測定値が5個だけでしたけど、位置 x は連続的で、値が無限にありますよ。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこで新しい道具、<strong>積分</strong>の出番だ。名前は仰々しいけれど、発想は素朴そのもの。「曲線の下の面積を知りたければ、<strong>細い短冊に切って、長方形として足せばいい</strong>」――これだけなんだ。切り方を細かくするほど答えは正確になり、無限に細かくした極限が積分。記号 ∫ は Sum（和）の頭文字 S を縦に引き伸ばしたものだよ。∫ f(x) dx は「幅 dx の短冊の面積 f(x)×dx を、すべて足し合わせる」と読む。発想自体は2000年以上前のアルキメデスまでさかのぼる。ニュートンとライプニッツが17世紀に道具として完成させた。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" viewBox="0 0 320 180" width="100%" role="img" aria-label="確率密度の曲線の下に細い長方形が並び、その面積の合計が確率になることを示す図">
+          <line class="base" x1="15" y1="145" x2="305" y2="145"></line>
+          <rect class="bar" x="120" y="85" width="16" height="60"></rect>
+          <rect class="bar" x="136" y="62" width="16" height="83"></rect>
+          <rect class="bar" x="152" y="55" width="16" height="90"></rect>
+          <rect class="bar" x="168" y="68" width="16" height="77"></rect>
+          <rect class="bar" x="184" y="98" width="16" height="47"></rect>
+          <path class="wave" d="M30 143 Q80 140 110 110 Q140 55 160 53 Q185 55 215 115 Q250 141 300 144"></path>
+          <text class="strong" x="30" y="22">|ψ(x)|² の曲線</text>
+          <text class="label" x="30" y="38">曲線の下の面積 ＝ その区間で見つかる確率</text>
+          <text class="label" x="118" y="168">細い短冊に切って足す ＝ 積分 ∫</text>
+        </svg>
+        <div class="diagram-caption">確率密度 |ψ(x)|² のグラフ。ある区間で電子が見つかる確率は、その区間の曲線の下の面積。面積は「幅 dx の短冊 |ψ(x)|²·dx の足し合わせ」で、これを無限に細かくしたものが積分 ∫|ψ(x)|² dx</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">この道具で、まず一番大事な式が書ける。電子は測れば<strong>必ずどこかで</strong>見つかる。つまり、数直線全体（−∞ から ＋∞ まで）で面積を足し合わせると、全確率の1にならなければいけない。これを<strong>規格化条件</strong>と呼ぶよ。以後このクエストでは、∫ と書いたら全部「−∞ から ＋∞ までの積分」の意味だと約束しておこう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">規格化条件： ∫ |ψ(x)|² dx ＝ 1　（電子は必ずどこかにいる）</span>
+        <span class="step">複素共役： z＝a＋bi に対して z*＝a−bi。 |z|² ＝ z·z* ＝ a²＋b²</span>
+        <span class="step">約束： ∫ はすべて −∞ から ＋∞ までの積分。遠方では ψ → 0（電子は無限の彼方にはいない）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">次は平均だ。その前に、飛び飛びの場合の平均を思い出そう。サイコロを1回振ったときの出目の平均は、どう計算するかな？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">それぞれの目が確率 1/6 で出るので、「値 × その値が出る確率」を全部足します。1×1/6 ＋ 2×1/6 ＋ … ＋ 6×1/6 ＝ 3.5 です。……あ、待ってください、いまの計算とさっきの積分、形がそっくりです。「値 × 確率」を足す。連続の場合は、値 x に、そこで見つかる確率 |ψ(x)|²dx を掛けて、積分すればいい。つまり平均は ∫ x |ψ(x)|² dx ですね！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り！ 自力で式を組み立てたね。物理では平均を山括弧で ⟨x⟩ と書く。そして前のステージの標準偏差のレシピ――ずれを2乗して、平均して、平方根――も、同じ置き換えでそのまま連続版になる。「平均からのずれの2乗」(x−⟨x⟩)² に、確率の重み |ψ|² を掛けて積分すればいい。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">位置の平均： ⟨x⟩ ＝ ∫ x |ψ(x)|² dx　（「値×確率」の足し合わせ）</span>
+        <span class="step">位置の分散： (Δx)² ＝ ∫ (x−⟨x⟩)² |ψ(x)|² dx　（ずれの2乗の平均）</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">ここで、証明を見通しよくするための下ごしらえをひとつ。式に ⟨x⟩ が入ったままだと計算がごちゃごちゃするから、<strong>座標の原点を、平均の位置に取り直そう</strong>。ものさしの目盛りをずらすだけだから、山の形も、ばらつきの幅 Δx も、何ひとつ変わらない。でも新しい座標では ⟨x⟩＝0 になって、式がすっきりする。運動量も同じで、平均 ⟨p⟩ がゼロでないなら、電子の集団と<strong>並走する立場</strong>から見ればいい。平均の流れは消えて ⟨p⟩＝0、ばらつき Δp はそのまま残る。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">証明したいのは Δx と Δp の不等式で、その2つがどちらも変わらないなら、平均を0にした状態で証明すれば十分ということですね。基準点の取り方は人間の勝手で、ばらつきは物理の事実、と。それなら遠慮なく使わせてもらいましょう。式はこうなりますね。(Δx)² ＝ ∫ x² |ψ|² dx。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それでいいよ。⟨x⟩＝0 なら「ずれ」は x そのものだからね。これで Δx は片付いた。残るは Δp――ところが、こちらは一筋縄ではいかない。|ψ|² のグラフから読めるのは<strong>位置</strong>の確率だけで、運動量はどこにも見当たらないんだ。運動量は、波のもっと奥深くに隠れている。次のステージで、それを引きずり出す道具を作ろう。</div>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【下ごしらえ完了】原点と立場を選び直して ⟨x⟩＝0, ⟨p⟩＝0 としてよい。このとき：</span>
+        <span class="step">(Δx)² ＝ ∫ x² |ψ(x)|² dx</span>
+      </div>
+
+      <div class="quiz-head">確認クイズ</div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. |ψ(x)|² dx が表すものは？</p>
+        <div class="choice-list">
+          <button class="choice-btn">位置を測ったとき、x の近くの幅 dx の区間で電子が見つかる確率</button>
+          <button class="choice-btn">その場所にある電子の個数</button>
+          <button class="choice-btn">波の高さそのもの</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ |ψ(x)|² は確率の「濃さ」（確率密度）で、区間の幅 dx を掛けるとその区間で見つかる確率になる。ボルンがこの解釈にたどり着いたのは論文の脚注だった。</div>
+      </div>
+
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 規格化条件 ∫|ψ|² dx ＝ 1 の物理的な意味は？</p>
+        <div class="choice-list">
+          <button class="choice-btn">波の高さの最大値が1であること</button>
+          <button class="choice-btn">電子がちょうど1秒間だけ存在すること</button>
+          <button class="choice-btn">位置を測れば、電子は必ずどこかで見つかること（全確率が1）</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 数直線全体で確率を足し合わせると1。この「当たり前」の条件が、後のステージで証明の急所に −1 という数を送り込むことになる。</div>
+      </div>
+
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 座標の原点を平均 ⟨x⟩ の位置にずらすと、Δx はどうなる？</p>
+        <div class="choice-list">
+          <button class="choice-btn">0になる</button>
+          <button class="choice-btn">変わらない（ばらつきの幅は基準点の取り方によらない）</button>
+          <button class="choice-btn">ずらした距離のぶんだけ小さくなる</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ものさしの目盛りをずらしても山の形と幅は変わらない。だから ⟨x⟩＝0 の場合だけ証明すれば、すべての場合を証明したことになる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← トップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="js/progress.js"></script>
+<script>KQ.initStagePage(2);</script>
+</body>
+</html>
