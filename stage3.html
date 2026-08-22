@@ -170,6 +170,33 @@
           </div>
           <div class="dialog-bubble">複素数の教室で習ったオイラーの公式ですね。整理し直すと――e<sup>iθ</sup>＝cos θ＋i sin θ。角度 θ を増やすと、複素数の平面の上で単位円をぐるぐる回る「回転する数」でした。だから e<sup>ikx</sup> は、x が進むにつれて回転する波。実部だけ見ればコサインの波で、確かに波長 2π/k で繰り返します。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" id="pw-svg" viewBox="0 0 340 200" width="100%" role="img" aria-label="左：複素数平面の単位円の上を、eのikx乗の値を表す矢印が回転する。右：各xでの実部を並べると、波長2π/kで繰り返すコサインの波が現れる。回転と波の上の点が同期して動くアニメーション">
+          <text class="strong" x="14" y="20">値は単位円を回る</text>
+          <text class="strong" x="150" y="20">実部を並べると、波になる</text>
+          <line class="base" x1="62" y1="52" x2="62" y2="142"></line>
+          <line class="base" x1="16" y1="96" x2="108" y2="96"></line>
+          <text class="label" x="68" y="62">実</text>
+          <text class="label" x="98" y="112">虚</text>
+          <circle cx="62" cy="96" r="38" fill="none" stroke="var(--muted)" stroke-width="1.5"></circle>
+          <line class="base" x1="120" y1="96" x2="332" y2="96"></line>
+          <polyline id="pw-curve" class="wave" points=""></polyline>
+          <line id="pw-conn" x1="0" y1="0" x2="0" y2="0" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"></line>
+          <line id="pw-arrow" x1="62" y1="96" x2="62" y2="58" stroke="#b5504a" stroke-width="2"></line>
+          <circle id="pw-cpt" cx="62" cy="58" r="4" fill="#b5504a"></circle>
+          <circle id="pw-wpt" cx="120" cy="58" r="4" fill="var(--gold-dark)"></circle>
+          <line class="kq-lam" x1="120" y1="44" x2="204" y2="44" stroke="var(--muted)" stroke-width="1.5"></line>
+          <polygon fill="var(--muted)" points="120,44 127,41 127,47"></polygon>
+          <polygon fill="var(--muted)" points="204,44 197,41 197,47"></polygon>
+          <text class="label" x="212" y="48">波長 λ＝2π/k</text>
+          <text class="label" x="300" y="112">x</text>
+        </svg>
+        <div class="diagram-caption">平面波 e<sup>ikx</sup> の姿。左：x が進むにつれ、e<sup>ikx</sup> の値（矢印）は複素数平面の単位円の上を回り続ける（見やすいように実軸を縦向きに描いた）。右：各 x での実部＝矢印の縦成分を並べると、波長 λ＝2π/k で繰り返すコサインの波が現れる。回転が速い（k が大きい）ほど波長は短く、p＝ℏk の運動量は大きい</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
@@ -275,6 +302,59 @@
 
 <script src="js/progress.js"></script>
 <script>
+  // 平面波 e^(ikx)：単位円上の回転と、実部のコサイン波の同期アニメーション
+  (function () {
+    var REDUCED_MOTION = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var svg = document.getElementById("pw-svg");
+    if (!svg) return;
+    var CX = 62, CY = 96, R = 38;          // 単位円
+    var X0 = 120, X1 = 332, LAM = 84;      // 波の描画範囲と波長(px)
+    var K = 2 * Math.PI / LAM;
+
+    // 静的なコサイン波（実部）を描く
+    var pts = [];
+    for (var x = X0; x <= X1; x += 2) {
+      pts.push(x + "," + (CY - R * Math.cos(K * (x - X0))).toFixed(1));
+    }
+    document.getElementById("pw-curve").setAttribute("points", pts.join(" "));
+
+    var arrow = document.getElementById("pw-arrow");
+    var cpt = document.getElementById("pw-cpt");
+    var wpt = document.getElementById("pw-wpt");
+    var conn = document.getElementById("pw-conn");
+
+    function draw(xs) {
+      var th = K * (xs - X0);
+      var px = CX + R * Math.sin(th);
+      var py = CY - R * Math.cos(th);
+      var wy = CY - R * Math.cos(th);
+      arrow.setAttribute("x2", px.toFixed(1)); arrow.setAttribute("y2", py.toFixed(1));
+      cpt.setAttribute("cx", px.toFixed(1)); cpt.setAttribute("cy", py.toFixed(1));
+      wpt.setAttribute("cx", xs.toFixed(1)); wpt.setAttribute("cy", wy.toFixed(1));
+      conn.setAttribute("x1", px.toFixed(1)); conn.setAttribute("y1", py.toFixed(1));
+      conn.setAttribute("x2", xs.toFixed(1)); conn.setAttribute("y2", wy.toFixed(1));
+    }
+
+    if (REDUCED_MOTION) { draw(X0 + 30); return; }
+
+    var running = true;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        running = entries[0].isIntersecting;
+      }).observe(svg);
+    }
+    var last = 0;
+    function loop(ms) {
+      if (running && ms - last > 33) {  // 約30fps
+        last = ms;
+        var t = (ms / 1000 * 40) % (X1 - X0);  // 毎秒40pxでxが進む
+        draw(X0 + t);
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+
   // 波長の長い波・短い波を描く（静止画）
   (function () {
     function makePath(yc, amp, wavelen, x0, x1) {
