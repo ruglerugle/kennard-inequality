@@ -127,7 +127,7 @@
       </div>
 
       <div class="diagram-box">
-        <svg class="kq-svg axes-svg" viewBox="0 0 1200 675" width="100%" role="img" aria-label="研究室の絵に、実験室に固定したx軸・y軸・z軸の3本のものさしを重ねた図。黒板の前に漂う電子雲の中で電子が見つかった位置から、真下に破線が下りている">
+        <svg class="kq-svg axes-svg" viewBox="0 0 1200 675" width="100%" role="img" aria-label="研究室の絵に、実験室に固定したx軸・y軸・z軸の3本のものさしを重ねた図。黒板の前には模式化した原子の3Dホログラムが浮かび、中心の輝点が原子核、まわりの点々が電子雲。電子雲の中で電子が見つかった位置から真下に破線が下りている">
           <image href="images/labo.webp" x="0" y="0" width="1200" height="675"></image>
           <!-- x軸（左右） -->
           <line class="axw" x1="80" y1="575" x2="1128" y2="575"></line>
@@ -172,14 +172,18 @@
           <text class="axlet ty" x="792" y="360">y</text>
           <!-- 原点ラベル -->
           <text class="axnum tink" x="230" y="660" text-anchor="middle">0（原点）</text>
-          <!-- 電子の見つかった位置 -->
-          <line class="axw" x1="623" y1="252" x2="623" y2="548"></line>
-          <line class="edash" x1="623" y1="252" x2="623" y2="548"></line>
-          <circle cx="623" cy="242" r="12" fill="none" stroke="#fff" stroke-width="7"></circle>
-          <circle cx="623" cy="242" r="12" fill="none" stroke="#241d12" stroke-width="3"></circle>
-          <text class="tink" x="650" y="222">電子が見つかった位置 (x, y, z)</text>
+          <!-- 原子核（ホログラム中心の輝点） -->
+          <line class="axw" x1="648" y1="272" x2="632" y2="250"></line>
+          <line class="edash" x1="648" y1="272" x2="632" y2="250"></line>
+          <text class="tink" x="658" y="292">原子核</text>
+          <!-- 電子の見つかった位置（電子雲の中の1点） -->
+          <line class="axw" x1="505" y1="180" x2="505" y2="548"></line>
+          <line class="edash" x1="505" y1="180" x2="505" y2="548"></line>
+          <circle cx="505" cy="168" r="12" fill="none" stroke="#fff" stroke-width="7"></circle>
+          <circle cx="505" cy="168" r="12" fill="none" stroke="#241d12" stroke-width="3"></circle>
+          <text class="tink" x="530" y="148">電子が見つかった位置 (x, y, z)</text>
         </svg>
-        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、電子雲のどこで電子が見つかっても、その位置は3つの目盛り (x, y, z) で表せる。このクエストでは x軸1本の世界で証明を進める</div>
+        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、電子雲のどこで電子が見つかっても、その位置は3つの目盛り (x, y, z) で表せる。このクエストでは x軸1本の世界で証明を進める</div>
       </div>
 
       <div class="dialogue-scene">
