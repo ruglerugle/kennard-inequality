@@ -31,6 +31,13 @@
   .kq-svg .tang{stroke:#b5504a;stroke-width:2}
   .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+  .kq-svg .axis{stroke:var(--muted);stroke-width:1.5}
+  .kq-svg .ah{fill:var(--muted)}
+  .kq-svg .tri{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 4;fill:none}
+  .kq-svg .lineA{stroke:#b5504a;stroke-width:2.5;fill:none;stroke-linecap:round}
+  .kq-svg .lineB{stroke:var(--gold);stroke-width:2.5;fill:none;stroke-linecap:round}
+  .kq-svg .lbA{fill:#b5504a;font-size:12px;font-weight:900}
+  .kq-svg .lbB{fill:var(--gold-dark);font-size:12px;font-weight:900}
 </style>
 </head>
 <body>
@@ -101,6 +108,32 @@
           </div>
           <div class="dialog-bubble">そこで今日の新しい道具、<strong>微分</strong>だよ。これも正体は素朴で、「グラフの<strong>ある点での傾き</strong>を読む」道具なんだ。曲線でも、1点のまわりをどんどん拡大していけば、ほとんどまっすぐな線に見えてくる。そのまっすぐな線の傾きが、その点での微分の値。関数 ψ(x) の各点での傾きを並べたものを ψ′(x) や dψ/dx と書く。きみは「速さ＝距離÷時間」を知っているね。あれは実は、位置のグラフの<strong>傾き</strong>を読んでいるんだ。グラフが急なほど、短い時間で大きく進む――つまり速い。微分は「変化の速さを読む道具」と言ってもいい。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" viewBox="0 0 320 205" width="100%" role="img" aria-label="位置と時間のグラフ。急な直線は同じ時間で大きく進むので速く、なだらかな直線は少ししか進まないので遅い。傾きが速さを表すことを示す図">
+          <line class="axis" x1="40" y1="185" x2="40" y2="22"></line>
+          <polygon class="ah" points="40,12 35,24 45,24"></polygon>
+          <line class="axis" x1="40" y1="185" x2="298" y2="185"></line>
+          <polygon class="ah" points="308,185 296,180 296,190"></polygon>
+          <text class="label" x="8" y="32">位置</text>
+          <text class="label" x="278" y="201">時間</text>
+          <text class="strong" x="70" y="16">グラフの傾き ＝ 速さ</text>
+          <line class="lineA" x1="40" y1="185" x2="150" y2="45"></line>
+          <line class="lineB" x1="40" y1="185" x2="295" y2="130"></line>
+          <text class="lbA" x="128" y="34">速い</text>
+          <text class="lbB" x="268" y="118">遅い</text>
+          <polyline class="tri" points="75,140.5 115,140.5 115,89.5"></polyline>
+          <text class="label" x="72" y="156">同じ時間</text>
+          <text class="label" x="121" y="118">大きく進む</text>
+          <polyline class="tri" points="180,154.8 220,154.8 220,146.2"></polyline>
+          <text class="label" x="177" y="171">同じ時間</text>
+          <text class="label" x="226" y="143">少しだけ進む</text>
+        </svg>
+        <div class="diagram-caption">位置と時間のグラフ。同じ時間ぶん（横の幅）に対して、どれだけ進んだか（縦の伸び）の割合が「傾き」。急な線ほど速く、なだらかな線ほど遅い。この傾きを1点ごとに読み出す道具が微分だ</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
