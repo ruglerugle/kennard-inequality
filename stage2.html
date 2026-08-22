@@ -47,6 +47,8 @@
   .axes-svg .tz{fill:#3e6fc4}
   .axes-svg .tink{fill:#241d12;font-size:32px}
   .axes-svg .edash{stroke:#241d12;stroke-width:2.5;stroke-dasharray:7 7;fill:none}
+  .axes-svg .axw2{stroke:#fff;stroke-opacity:.65;stroke-width:4.5;fill:none;stroke-linecap:round}
+  .axes-svg .edash2{stroke:#241d12;stroke-width:1.6;stroke-dasharray:5 6;fill:none;opacity:.85}
 </style>
 </head>
 <body>
@@ -192,6 +194,15 @@
           <line class="edash" x1="549" y1="255" x2="443" y2="315"></line>
           <line class="axw" x1="443" y1="315" x2="230" y2="315"></line>
           <line class="edash" x1="443" y1="315" x2="230" y2="315"></line>
+          <!-- 補助破線（読み取りの直方体の残りの辺）：
+               C→R=(347,248)（y軸に平行）、R→P（x軸に平行）、A→P1（z軸に平行） -->
+          <line class="axw2" x1="236" y1="312" x2="347" y2="248"></line>
+          <line class="edash2" x1="236" y1="312" x2="347" y2="248"></line>
+          <line class="axw2" x1="347" y1="248" x2="546" y2="248"></line>
+          <line class="edash2" x1="347" y1="248" x2="546" y2="248"></line>
+          <line class="axw2" x1="443" y1="568" x2="443" y2="321"></line>
+          <line class="edash2" x1="443" y1="568" x2="443" y2="321"></line>
+          <circle cx="347" cy="248" r="4" fill="#241d12" stroke="#fff" stroke-width="2"></circle>
           <circle cx="560" cy="508" r="5" fill="#241d12" stroke="#fff" stroke-width="2.5"></circle>
           <circle cx="443" cy="315" r="5" fill="#241d12" stroke="#fff" stroke-width="2.5"></circle>
           <circle cx="443" cy="575" r="6" fill="#c9473c" stroke="#fff" stroke-width="2.5"></circle>
@@ -203,7 +214,7 @@
           <text class="tink" x="590" y="182">位置 (x, y, z) における、</text>
           <text class="tink" x="590" y="222">電子が見つかる確率密度</text>
         </svg>
-        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、空間のどの点も3つの目盛り (x, y, z) で指定できて、点ごとに「そこで電子が見つかる確率密度」が決まっている――その濃淡の全体像が電子雲だ。博士の指示棒の先の点から点線をたどれば、3本の軸の目盛りが読み取れる（この点なら x はおよそ 1.6、y はおよそ 1.5、z は 2。目盛りの間の値も立派な座標だ）。奥行きの y軸は遠近法で、目盛りが奥ほど詰まって見える。このクエストでは x軸1本の世界で証明を進める</div>
+        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、空間のどの点も3つの目盛り (x, y, z) で指定できて、点ごとに「そこで電子が見つかる確率密度」が決まっている――その濃淡の全体像が電子雲だ。博士の指示棒の先の点から点線をたどれば、3本の軸の目盛りが読み取れる（この点なら x はおよそ 1.6、y はおよそ 1.5、z は 2。目盛りの間の値も立派な座標だ）。奥行きの y軸は遠近法で、目盛りが奥ほど詰まって見える。細い破線は、読み取りに使う直方体（箱）の残りの辺。このクエストでは x軸1本の世界で証明を進める</div>
       </div>
 
       <div class="dialogue-scene">
