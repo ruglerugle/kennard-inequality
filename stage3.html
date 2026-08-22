@@ -161,14 +161,35 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">では、その直感を精密な式にしよう。運動量がぴったり決まった波――量子力学ではそれを<strong>平面波 ψ(x)＝e<sup>ikx</sup></strong> と書く。ここで k は「波数」といって、波長 λ との関係は k＝2π/λ。波長が短いほど k は大きい。p＝h/λ を k で書き直すと p＝ℏk になる（ℏ＝h/2π だからね）。e<sup>ikx</sup> という書き方は大丈夫かな。</div>
+          <div class="dialog-bubble">では、その直感を精密な式にしよう。目標は「運動量がぴったり決まった波」を式で書くことだ。準備として、波長 λ の代わりに<strong>波数 k＝2π/λ</strong> という量を使う。x が 1 進むごとに、波の「進み具合（角度）」が k ずつ増える、と読める量だよ。波長が短いほど k は大きい。p＝h/λ を k で書き直すと <strong>p＝ℏk</strong> になる（ℏ＝h/2π だからね）。さて本題。「波長 2π/k で繰り返す波」と聞いて、まず思いつく式は何かな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">複素数の教室で習ったオイラーの公式ですね。整理し直すと――e<sup>iθ</sup>＝cos θ＋i sin θ。角度 θ を増やすと、複素数の平面の上で単位円をぐるぐる回る「回転する数」でした。だから e<sup>ikx</sup> は、x が進むにつれて回転する波。実部だけ見ればコサインの波で、確かに波長 2π/k で繰り返します。</div>
+          <div class="dialog-bubble">波といえば……複素数の教室で出てきたコサインです。cos(kx) なら、kx が 2π 増えるごと――つまり x が 2π/k 進むごとに同じ値に戻るので、ちゃんと波長 2π/k の波になります。これでは駄目なんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">最有力の第一候補だね。でも量子の波には、守るべき掟がひとつある。|ψ|² は「見つかる確率の濃さ」だ、という掟だよ。そして量子力学の教室で確かめたとおり、<strong>運動量がぴったり決まった波では、位置の情報は完全に失われる</strong>のだった。ということは、この波の |ψ|² には、他と区別できる特別な場所があってはいけない。<strong>どこを見ても同じ濃さ</strong>でなければならないんだ。この検査に、cos(kx) は合格できるかな。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">検査してみます。cos は ＋1 と −1 の間で上下して、途中で必ず 0 を通ります。2乗した cos²(kx) は 0 と 1 の間で波打つので、一様ではありません。それどころか「絶対に見つからない場所」が波長ごとに規則正しく並んでしまう。これは立派な目印で、位置の情報が残ります……不合格です。必要なのは、<strong>波として繰り返すのに、大きさはどこでも同じ</strong>という無茶な注文を満たす関数……あっ、ありますよ。<strong>回る数</strong>です。複素数の教室の e<sup>iθ</sup>＝cos θ＋i sin θ は単位円の上を回る数だから、<strong>大きさはずっと 1 のまま</strong>、向きだけがぐるぐる変わります！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">たどり着いたね。角度 θ を kx にした <strong>ψ(x)＝e<sup>ikx</sup>＝cos kx＋i sin kx</strong>。検査してみよう。|e<sup>ikx</sup>|² は単位円上の点の「大きさの2乗」で、半径はずっと 1 だから、確率の濃さは<strong>どこでも 1 で完全に一様</strong>――合格だ。それでいて向きは、x が 2π/k 進むごとにちょうど一回転して元に戻るから、波長 2π/k でちゃんと繰り返す。<strong>波打つのは「向き」だけで、大きさは一定</strong>。この波を<strong>平面波</strong>と呼ぶ。波動関数が複素数なのは飾りではなくて、「運動量が決まっているのに、場所の手がかりはない」という物理の要請が複素数を必要とするんだ。</div>
         </div>
       </div>
 
@@ -192,8 +213,10 @@
           <polygon fill="var(--muted)" points="204,44 197,41 197,47"></polygon>
           <text class="label" x="212" y="48">波長 λ＝2π/k</text>
           <text class="label" x="300" y="112">x</text>
+          <text class="label" x="62" y="162" text-anchor="middle">矢印の長さはいつも1</text>
+          <text class="label" x="62" y="178" text-anchor="middle">→ |ψ|² はどこでも一様</text>
         </svg>
-        <div class="diagram-caption">平面波 e<sup>ikx</sup> の姿。左：x が進むにつれ、e<sup>ikx</sup> の値（矢印）は複素数平面の単位円の上を回り続ける（見やすいように実軸を縦向きに描いた）。右：各 x での実部＝矢印の縦成分を並べると、波長 λ＝2π/k で繰り返すコサインの波が現れる。回転が速い（k が大きい）ほど波長は短く、p＝ℏk の運動量は大きい</div>
+        <div class="diagram-caption">平面波 e<sup>ikx</sup> の姿。左：x が進むにつれ、e<sup>ikx</sup> の値（矢印）は複素数平面の単位円の上を回り続ける（見やすいように実軸を縦向きに描いた）。矢印の<strong>長さは変わらず、向きだけ</strong>が回るので、確率の濃さ |ψ|² はどこでも一様――位置の手がかりはどこにもない。右：各 x での実部＝矢印の縦成分を並べると、波長 λ＝2π/k で繰り返すコサインの波が現れる。回転が速い（k が大きい）ほど波長は短く、p＝ℏk の運動量は大きい</div>
       </div>
 
       <div class="dialogue-scene">
