@@ -159,17 +159,19 @@
           <text class="axnum tz" x="202" y="325" text-anchor="end">2</text>
           <text class="axnum tz" x="202" y="195" text-anchor="end">3</text>
           <text class="axlet tz" x="258" y="108">z</text>
-          <!-- y軸（奥行き・約30度） 1目盛り＝(113.1, −65) -->
-          <line class="axw" x1="230" y1="575" x2="752" y2="275"></line>
-          <line class="axy" x1="230" y1="575" x2="752" y2="275"></line>
-          <polygon class="ahy" points="776,261 757,285 746,265"></polygon>
-          <line class="axw" x1="337" y1="500" x2="349" y2="520"></line><line class="axy" x1="337" y1="500" x2="349" y2="520"></line>
-          <line class="axw" x1="450" y1="435" x2="462" y2="455"></line><line class="axy" x1="450" y1="435" x2="462" y2="455"></line>
-          <line class="axw" x1="563" y1="370" x2="575" y2="390"></line><line class="axy" x1="563" y1="370" x2="575" y2="390"></line>
-          <text class="axnum ty" x="329" y="494" text-anchor="end">1</text>
-          <text class="axnum ty" x="442" y="429" text-anchor="end">2</text>
-          <text class="axnum ty" x="555" y="364" text-anchor="end">3</text>
-          <text class="axlet ty" x="788" y="252">y</text>
+          <!-- y軸（奥行き・約30度）。遠近法で目盛りは奥ほど詰まる（95→78→64→52px）。黒板の手前（テーブル奥）で切る -->
+          <line class="axw" x1="230" y1="575" x2="517" y2="410"></line>
+          <line class="axy" x1="230" y1="575" x2="517" y2="410"></line>
+          <polygon class="ahy" points="539,398 520,422 509,402"></polygon>
+          <line class="axw" x1="307" y1="517" x2="319" y2="538"></line><line class="axy" x1="307" y1="517" x2="319" y2="538"></line>
+          <line class="axw" x1="375" y1="478" x2="387" y2="499"></line><line class="axy" x1="375" y1="478" x2="387" y2="499"></line>
+          <line class="axw" x1="430" y1="446" x2="442" y2="467"></line><line class="axy" x1="430" y1="446" x2="442" y2="467"></line>
+          <line class="axw" x1="475" y1="420" x2="487" y2="441"></line><line class="axy" x1="475" y1="420" x2="487" y2="441"></line>
+          <text class="axnum ty" x="299" y="512" text-anchor="end">1</text>
+          <text class="axnum ty" x="367" y="473" text-anchor="end">2</text>
+          <text class="axnum ty" x="422" y="441" text-anchor="end">3</text>
+          <text class="axnum ty" x="467" y="415" text-anchor="end">4</text>
+          <text class="axlet ty" x="524" y="382">y</text>
           <!-- 原点ラベル -->
           <text class="axnum tink" x="230" y="660" text-anchor="middle">0（原点）</text>
           <!-- 原子核（ホログラム中心の輝点） -->
@@ -201,7 +203,7 @@
           <text class="tink" x="590" y="182">位置 (x, y, z) における、</text>
           <text class="tink" x="590" y="222">電子が見つかる確率密度</text>
         </svg>
-        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、空間のどの点も3つの目盛り (x, y, z) で指定できて、点ごとに「そこで電子が見つかる確率密度」が決まっている――その濃淡の全体像が電子雲だ。博士の指示棒の先の点から点線をたどれば、3本の軸の目盛りが読み取れる（この点なら x はおよそ 1.6、y はおよそ 1、z は 2。目盛りの間の値も立派な座標だ）。このクエストでは x軸1本の世界で証明を進める</div>
+        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、空間のどの点も3つの目盛り (x, y, z) で指定できて、点ごとに「そこで電子が見つかる確率密度」が決まっている――その濃淡の全体像が電子雲だ。博士の指示棒の先の点から点線をたどれば、3本の軸の目盛りが読み取れる（この点なら x はおよそ 1.6、y はおよそ 1.5、z は 2。目盛りの間の値も立派な座標だ）。奥行きの y軸は遠近法で、目盛りが奥ほど詰まって見える。このクエストでは x軸1本の世界で証明を進める</div>
       </div>
 
       <div class="dialogue-scene">
