@@ -46,7 +46,7 @@
   .axes-svg .ty{fill:#2f8a4f}
   .axes-svg .tz{fill:#3e6fc4}
   .axes-svg .tink{fill:#241d12;font-size:32px}
-  .axes-svg .edash{stroke:#241d12;stroke-width:3;stroke-dasharray:9 8;fill:none}
+  .axes-svg .edash{stroke:#241d12;stroke-width:2.5;stroke-dasharray:7 7;fill:none}
 </style>
 </head>
 <body>
@@ -127,7 +127,7 @@
       </div>
 
       <div class="diagram-box">
-        <svg class="kq-svg axes-svg" viewBox="0 0 1200 675" width="100%" role="img" aria-label="研究室の絵に、実験室に固定したx軸・y軸・z軸の3本のものさしを重ねた図。黒板の前には模式化した原子の3Dホログラムが浮かび、中心の輝点が原子核、まわりの点々が電子雲。電子雲の中の1点に印が付き、そこが「位置 (x, y, z) における、電子が見つかる確率密度」を尋ねる場所として示されている。印の点からは、床に下ろした垂線を経由してx軸・y軸へ、また水平にz軸へ、座標の読み取り方を示す点線が延びている">
+        <svg class="kq-svg axes-svg" viewBox="0 0 1200 675" width="100%" role="img" aria-label="研究室の絵に、実験室に固定したx軸・y軸・z軸の3本のものさしを重ねた図。黒板の前には模式化した原子の3Dホログラムが浮かび、中心の輝点が原子核、まわりの点々が電子雲。ねこ博士の指示棒の先に印が付き、そこが「位置 (x, y, z) における、電子が見つかる確率密度」を尋ねる場所として示されている。印の点からは、床に下ろした垂線を経由してx軸・y軸へ、またz軸へ、座標の読み取り方を示す点線が延びている">
           <image href="images/labo.webp" x="0" y="0" width="1200" height="675"></image>
           <!-- x軸（左右） -->
           <line class="axw" x1="80" y1="575" x2="1128" y2="575"></line>
@@ -176,26 +176,27 @@
           <line class="axw" x1="648" y1="272" x2="632" y2="250"></line>
           <line class="edash" x1="648" y1="272" x2="632" y2="250"></line>
           <text class="tink" x="658" y="292">原子核</text>
-          <!-- 電子雲の中の1点：そこで電子が見つかる確率密度。点は座標 (1, 1, 3) に対応 -->
-          <!-- P=(482,141)、床の足Q=(482,531)、x軸上A=(360,575)、y軸上B=(352,531)、z軸上C=(230,185) -->
-          <line class="axw" x1="482" y1="153" x2="482" y2="531"></line>
-          <line class="edash" x1="482" y1="153" x2="482" y2="531"></line>
-          <line class="axw" x1="482" y1="531" x2="360" y2="575"></line>
-          <line class="edash" x1="482" y1="531" x2="360" y2="575"></line>
-          <line class="axw" x1="482" y1="531" x2="352" y2="531"></line>
-          <line class="edash" x1="482" y1="531" x2="352" y2="531"></line>
-          <line class="axw" x1="470" y1="143" x2="230" y2="185"></line>
-          <line class="edash" x1="470" y1="143" x2="230" y2="185"></line>
-          <circle cx="482" cy="531" r="5" fill="#241d12" stroke="#fff" stroke-width="2.5"></circle>
-          <circle cx="360" cy="575" r="6" fill="#c9473c" stroke="#fff" stroke-width="2.5"></circle>
-          <circle cx="352" cy="531" r="6" fill="#2f8a4f" stroke="#fff" stroke-width="2.5"></circle>
-          <circle cx="230" cy="185" r="6" fill="#3e6fc4" stroke="#fff" stroke-width="2.5"></circle>
-          <circle cx="482" cy="141" r="12" fill="none" stroke="#fff" stroke-width="7"></circle>
-          <circle cx="482" cy="141" r="12" fill="none" stroke="#241d12" stroke-width="3"></circle>
-          <text class="tink" x="508" y="104">位置 (x, y, z) における、</text>
-          <text class="tink" x="508" y="144">電子が見つかる確率密度</text>
+          <!-- 博士の指示棒の先 P=(560,248)：そこで電子が見つかる確率密度を尋ねる -->
+          <!-- 奥行きの取り方は z=2 を選択。床の足Q=(560,508)、x軸上A=(375,575)、y軸上B=(415,508)、z軸上C=(230,315) -->
+          <line class="axw" x1="560" y1="262" x2="560" y2="508"></line>
+          <line class="edash" x1="560" y1="262" x2="560" y2="508"></line>
+          <line class="axw" x1="560" y1="508" x2="375" y2="575"></line>
+          <line class="edash" x1="560" y1="508" x2="375" y2="575"></line>
+          <line class="axw" x1="560" y1="508" x2="415" y2="508"></line>
+          <line class="edash" x1="560" y1="508" x2="415" y2="508"></line>
+          <line class="axw" x1="546" y1="251" x2="230" y2="315"></line>
+          <line class="edash" x1="546" y1="251" x2="230" y2="315"></line>
+          <circle cx="560" cy="508" r="5" fill="#241d12" stroke="#fff" stroke-width="2.5"></circle>
+          <circle cx="375" cy="575" r="6" fill="#c9473c" stroke="#fff" stroke-width="2.5"></circle>
+          <circle cx="415" cy="508" r="6" fill="#2f8a4f" stroke="#fff" stroke-width="2.5"></circle>
+          <circle cx="230" cy="315" r="6" fill="#3e6fc4" stroke="#fff" stroke-width="2.5"></circle>
+          <circle cx="560" cy="248" r="22" fill="none" stroke="#fff" stroke-width="5" opacity="0.55"></circle>
+          <circle cx="560" cy="248" r="13" fill="none" stroke="#fff" stroke-width="7"></circle>
+          <circle cx="560" cy="248" r="13" fill="none" stroke="#241d12" stroke-width="3"></circle>
+          <text class="tink" x="590" y="182">位置 (x, y, z) における、</text>
+          <text class="tink" x="590" y="222">電子が見つかる確率密度</text>
         </svg>
-        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、空間のどの点も3つの目盛り (x, y, z) で指定できて、点ごとに「そこで電子が見つかる確率密度」が決まっている――その濃淡の全体像が電子雲だ。印の点から点線をたどれば、3本の軸の目盛り（この図では x＝1, y＝1, z＝3）が読み取れる。このクエストでは x軸1本の世界で証明を進める</div>
+        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。黒板の前に浮かぶのは模式化した原子の3Dホログラムで、中心の輝点が原子核、まわりに漂う点々が電子雲（点が密な場所ほど電子が見つかりやすい）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、空間のどの点も3つの目盛り (x, y, z) で指定できて、点ごとに「そこで電子が見つかる確率密度」が決まっている――その濃淡の全体像が電子雲だ。博士の指示棒の先の点から点線をたどれば、3本の軸の目盛りが読み取れる（この点なら x はおよそ 1.1、y はおよそ 1.5、z は 2。目盛りの間の値も立派な座標だ）。このクエストでは x軸1本の世界で証明を進める</div>
       </div>
 
       <div class="dialogue-scene">
