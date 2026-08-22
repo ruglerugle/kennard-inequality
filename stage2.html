@@ -31,6 +31,22 @@
   .kq-svg .bar{fill:rgba(217,164,65,.35);stroke:var(--gold-dark);stroke-width:.8}
   .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+  /* 実験室図の座標軸オーバーレイ */
+  .axes-svg .axw{stroke:#fff;stroke-opacity:.8;stroke-width:8;fill:none;stroke-linecap:round}
+  .axes-svg .axx{stroke:#c9473c;stroke-width:3.5;fill:none;stroke-linecap:round}
+  .axes-svg .axy{stroke:#2f8a4f;stroke-width:3.5;fill:none;stroke-linecap:round}
+  .axes-svg .axz{stroke:#3e6fc4;stroke-width:3.5;fill:none;stroke-linecap:round}
+  .axes-svg .ahx{fill:#c9473c}
+  .axes-svg .ahy{fill:#2f8a4f}
+  .axes-svg .ahz{fill:#3e6fc4}
+  .axes-svg text{font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:6px}
+  .axes-svg .axnum{font-size:30px}
+  .axes-svg .axlet{font-size:48px;font-style:italic;font-family:Georgia,'Times New Roman',serif}
+  .axes-svg .tx{fill:#c9473c}
+  .axes-svg .ty{fill:#2f8a4f}
+  .axes-svg .tz{fill:#3e6fc4}
+  .axes-svg .tink{fill:#241d12;font-size:32px}
+  .axes-svg .edash{stroke:#241d12;stroke-width:3;stroke-dasharray:9 8;fill:none}
 </style>
 </head>
 <body>
@@ -108,6 +124,65 @@
           </div>
           <div class="dialog-bubble">完璧な整理だよ。ついでに白状しておくと、現実の空間は3次元だから、本当は x軸・y軸・z軸の3本を敷いて、位置は (x, y, z) の3つの目盛りで表す。このクエストでは話を簡単にするため、電子が<strong>一本の直線上だけを動く1次元の世界</strong>で証明するよ。心配はいらなくて、3次元でも同じ証明を軸ごとに3回繰り返すだけで、不確定性原理は<strong>軸ごとに独立に</strong>成り立つんだ。Δx とペアを組むのは同じ x軸方向の運動量 Δpₓ だけで、x軸方向を絞っても y軸方向の運動量には何の制限もかからない。ペアになるのは同じ軸同士だけ、というわけだね。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg axes-svg" viewBox="0 0 1200 675" width="100%" role="img" aria-label="研究室の絵に、実験室に固定したx軸・y軸・z軸の3本のものさしを重ねた図。黒板の前に漂う電子雲の中で電子が見つかった位置から、真下に破線が下りている">
+          <image href="images/labo.webp" x="0" y="0" width="1200" height="675"></image>
+          <!-- x軸（左右） -->
+          <line class="axw" x1="80" y1="575" x2="1128" y2="575"></line>
+          <line class="axx" x1="80" y1="575" x2="1128" y2="575"></line>
+          <polygon class="ahx" points="1160,575 1126,562 1126,588"></polygon>
+          <line class="axw" x1="100" y1="562" x2="100" y2="588"></line><line class="axx" x1="100" y1="562" x2="100" y2="588"></line>
+          <line class="axw" x1="360" y1="562" x2="360" y2="588"></line><line class="axx" x1="360" y1="562" x2="360" y2="588"></line>
+          <line class="axw" x1="490" y1="562" x2="490" y2="588"></line><line class="axx" x1="490" y1="562" x2="490" y2="588"></line>
+          <line class="axw" x1="620" y1="562" x2="620" y2="588"></line><line class="axx" x1="620" y1="562" x2="620" y2="588"></line>
+          <line class="axw" x1="750" y1="562" x2="750" y2="588"></line><line class="axx" x1="750" y1="562" x2="750" y2="588"></line>
+          <line class="axw" x1="880" y1="562" x2="880" y2="588"></line><line class="axx" x1="880" y1="562" x2="880" y2="588"></line>
+          <line class="axw" x1="1010" y1="562" x2="1010" y2="588"></line><line class="axx" x1="1010" y1="562" x2="1010" y2="588"></line>
+          <text class="axnum tx" x="100" y="622" text-anchor="middle">−1</text>
+          <text class="axnum tx" x="360" y="622" text-anchor="middle">1</text>
+          <text class="axnum tx" x="490" y="622" text-anchor="middle">2</text>
+          <text class="axnum tx" x="620" y="622" text-anchor="middle">3</text>
+          <text class="axnum tx" x="750" y="622" text-anchor="middle">4</text>
+          <text class="axnum tx" x="880" y="622" text-anchor="middle">5</text>
+          <text class="axnum tx" x="1010" y="622" text-anchor="middle">6</text>
+          <text class="axlet tx" x="1130" y="632">x</text>
+          <!-- z軸（上下） -->
+          <line class="axw" x1="230" y1="640" x2="230" y2="112"></line>
+          <line class="axz" x1="230" y1="640" x2="230" y2="112"></line>
+          <polygon class="ahz" points="230,80 217,114 243,114"></polygon>
+          <line class="axw" x1="217" y1="445" x2="243" y2="445"></line><line class="axz" x1="217" y1="445" x2="243" y2="445"></line>
+          <line class="axw" x1="217" y1="315" x2="243" y2="315"></line><line class="axz" x1="217" y1="315" x2="243" y2="315"></line>
+          <line class="axw" x1="217" y1="185" x2="243" y2="185"></line><line class="axz" x1="217" y1="185" x2="243" y2="185"></line>
+          <text class="axnum tz" x="202" y="455" text-anchor="end">1</text>
+          <text class="axnum tz" x="202" y="325" text-anchor="end">2</text>
+          <text class="axnum tz" x="202" y="195" text-anchor="end">3</text>
+          <text class="axlet tz" x="258" y="108">z</text>
+          <!-- y軸（奥行き・斜め） -->
+          <line class="axw" x1="230" y1="575" x2="756" y2="384"></line>
+          <line class="axy" x1="230" y1="575" x2="756" y2="384"></line>
+          <polygon class="ahy" points="786,373 752,371 761,396"></polygon>
+          <line class="axw" x1="348" y1="520" x2="356" y2="542"></line><line class="axy" x1="348" y1="520" x2="356" y2="542"></line>
+          <line class="axw" x1="471" y1="475" x2="479" y2="497"></line><line class="axy" x1="471" y1="475" x2="479" y2="497"></line>
+          <line class="axw" x1="593" y1="431" x2="601" y2="453"></line><line class="axy" x1="593" y1="431" x2="601" y2="453"></line>
+          <text class="axnum ty" x="338" y="513" text-anchor="end">1</text>
+          <text class="axnum ty" x="461" y="468" text-anchor="end">2</text>
+          <text class="axnum ty" x="583" y="424" text-anchor="end">3</text>
+          <text class="axlet ty" x="792" y="360">y</text>
+          <!-- 原点ラベル -->
+          <text class="axnum tink" x="230" y="660" text-anchor="middle">0（原点）</text>
+          <!-- 電子の見つかった位置 -->
+          <line class="axw" x1="623" y1="252" x2="623" y2="548"></line>
+          <line class="edash" x1="623" y1="252" x2="623" y2="548"></line>
+          <circle cx="623" cy="242" r="12" fill="none" stroke="#fff" stroke-width="7"></circle>
+          <circle cx="623" cy="242" r="12" fill="none" stroke="#241d12" stroke-width="3"></circle>
+          <text class="tink" x="650" y="222">電子が見つかった位置 (x, y, z)</text>
+        </svg>
+        <div class="diagram-caption">実験室に固定した3本のものさし（x軸・y軸・z軸）。原点をどこに置くか、どちらをプラスの向きにするかは人間の勝手だが、いったん決めれば、電子雲のどこで電子が見つかっても、その位置は3つの目盛り (x, y, z) で表せる。このクエストでは x軸1本の世界で証明を進める</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
