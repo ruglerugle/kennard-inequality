@@ -175,10 +175,52 @@
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">傾きを読む道具、ですか。……でも博士、そこが腑に落ちません。運動量が知りたいだけなら、<strong>波長さえ測れば p＝h/λ で出る</strong>はずです。「波の細かさ」というのは、要するに波長そのものですよね。なぜわざわざ微分なんて道具を持ち出す必要があるんでしょう。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その疑問こそ、この道具が存在する理由そのものだよ。理由は2つある。ひとつめ。<strong>波長は「山から山までの距離」で、離れた2点を見比べないと分からない量</strong>だ。ところが私たちがこれから作りたいのは ∫ … dx という、<strong>各点ごとの値を足し集める</strong>式だったね。積分の中に書けるのは、その場所その場所で値が決まる量だけなんだ。「この波全体の波長」は、積分の中身には入れられない。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">見えてきました。波長の短い波は、山から谷まで一気に駆け下りるから、<strong>波形の傾きが急</strong>になります。波長の長い波はなだらか。つまり「波の細かさ」は「傾きの大きさ」に現れる。傾きを読む道具が微分なら、微分こそが運動量の検出器になるはずです！</div>
+          <div class="dialog-bubble">言われてみれば……⟨x⟩ の式も、その点の x と、その点の |ψ|² を掛けて足していく形でした。運動量も同じ形にしたいなら、「<strong>その点での</strong>波の細かさ」を教えてくれる道具が要る。微分はまさに、1点のまわりだけを見て答えを返す道具ですね。……ふたつめの理由は何ですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">こちらのほうが深刻でね。<strong>一般の波動関数には、そもそも波長が1つに決まらない</strong>んだ。位置がある程度定まった波――波束は、いろいろな波長の波を混ぜて作るしかなかったね。そんな波に「きみの波長は？」と聞いても、答えは1つに決まらない。<strong>λ という記号を、式に書くことすらできない</strong>んだよ。だから必要なのは、どんな形の波にも機械的に施せて、波長が1つに決まる波（平面波）に対しては正しく p を返してくれる、そういう<strong>装置</strong>なんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">「波長を測って代入する」やり方は、きれいな平面波1本にしか通用しない、と。……ようやく話がつながりました。それで、その装置の候補が微分なんですね。同じ高さの波なら、波長が短いほど波形は急峻ですから、傾きには確かに「細かさ」の情報が入っています。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その直感でいい。ただし、ひとつ注意しておこう。「同じ高さの波なら」と、きみは正しく断りを入れたね。<strong>傾きの大きさそのものは、波の高さにも左右される</strong>。背の高いゆるやかな波のほうが、背の低い細かい波より傾きが急、ということが起こりうるんだ。だから傾きだけでは運動量にならない。効いてくるのは「<strong>傾きが、もとの値の何倍か</strong>」という比のほうだよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">割り算で高さの影響を消してしまうわけですね。「その点での傾き ÷ その点での値」なら、波を2倍に大きくしても、分子も分母も2倍になって比は変わらない。高さによらず、細かさだけが残る……。</div>
         </div>
       </div>
 
@@ -191,7 +233,7 @@
           <text class="strong" x="18" y="16">波長が長い（p 小）→ 傾きなだらか</text>
           <text class="strong" x="18" y="112">波長が短い（p 大）→ 傾きが急</text>
         </svg>
-        <div class="diagram-caption">同じ高さの波でも、波長が短いほど波形の傾きは急になる。運動量 p＝h/λ の情報は「波形の傾き」に刻まれている――だから傾きを読む微分が、運動量を取り出す道具になる</div>
+        <div class="diagram-caption">同じ高さの波でも、波長が短いほど波形の傾きは急になる。運動量 p＝h/λ の情報は「波形の傾き」に刻まれている――だから傾きを読む微分が、運動量を取り出す道具の候補になる。ただし傾きは波の高さにも左右されるので、実際に効くのは「傾き ÷ もとの値」の比のほうだ</div>
       </div>
 
       <div class="dialogue-scene">
@@ -264,7 +306,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">完璧だ。そして e<sup>ikx</sup> には、微分すると自分自身の ik 倍になる、という美しい性質がある（指数関数の微分の規則だよ。傾きが自分の高さに比例する、成長する関数の性質だ）。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
+          <div class="dialog-bubble">完璧だ。そして e<sup>ikx</sup> には、<strong>微分すると自分自身の ik 倍になる</strong>、という美しい性質がある（指数関数の微分の規則だよ。傾きが自分の高さに比例する、成長する関数の性質だ）。さっききみが言った「傾き ÷ もとの値」を、この波でやってみるとどうなるかな。ψ′ ÷ ψ ＝ ik ――波の高さがきれいに消えて、<strong>波数 k だけが残る</strong>。求めていた比が、本当に細かさだけを取り出したわけだ。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
         </div>
       </div>
 
