@@ -161,27 +161,27 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">では、その直感を精密な式にしよう。運動量がぴったり決まった波――量子力学ではそれを<strong>平面波 ψ(x)＝e^(ikx)</strong> と書く。ここで k は「波数」といって、波長 λ との関係は k＝2π/λ。波長が短いほど k は大きい。p＝h/λ を k で書き直すと p＝ℏk になる（ℏ＝h/2π だからね）。e^(ikx) という書き方は大丈夫かな。</div>
+          <div class="dialog-bubble">では、その直感を精密な式にしよう。運動量がぴったり決まった波――量子力学ではそれを<strong>平面波 ψ(x)＝e<sup>ikx</sup></strong> と書く。ここで k は「波数」といって、波長 λ との関係は k＝2π/λ。波長が短いほど k は大きい。p＝h/λ を k で書き直すと p＝ℏk になる（ℏ＝h/2π だからね）。e<sup>ikx</sup> という書き方は大丈夫かな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">複素数の教室で習ったオイラーの公式ですね。整理し直すと――e^(iθ)＝cos θ＋i sin θ。角度 θ を増やすと、複素数の平面の上で単位円をぐるぐる回る「回転する数」でした。だから e^(ikx) は、x が進むにつれて回転する波。実部だけ見ればコサインの波で、確かに波長 2π/k で繰り返します。</div>
+          <div class="dialog-bubble">複素数の教室で習ったオイラーの公式ですね。整理し直すと――e<sup>iθ</sup>＝cos θ＋i sin θ。角度 θ を増やすと、複素数の平面の上で単位円をぐるぐる回る「回転する数」でした。だから e<sup>ikx</sup> は、x が進むにつれて回転する波。実部だけ見ればコサインの波で、確かに波長 2π/k で繰り返します。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">完璧だ。そして e^(ikx) には、微分すると自分自身の ik 倍になる、という美しい性質がある（指数関数の微分の規則だよ。傾きが自分の高さに比例する、成長する関数の性質だ）。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
+          <div class="dialog-bubble">完璧だ。そして e<sup>ikx</sup> には、微分すると自分自身の ik 倍になる、という美しい性質がある（指数関数の微分の規則だよ。傾きが自分の高さに比例する、成長する関数の性質だ）。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
         </div>
       </div>
 
       <div class="formula-box">
-        <span class="step">平面波の微分： d/dx e^(ikx) ＝ ik e^(ikx)</span>
-        <span class="step">−iℏ を掛けると： −iℏ × ik e^(ikx) ＝ ℏk e^(ikx) ＝ <strong>p × e^(ikx)</strong>　（−i×i＝1 を使った）</span>
+        <span class="step">平面波の微分： d/dx e<sup>ikx</sup> ＝ ik e<sup>ikx</sup></span>
+        <span class="step">−iℏ を掛けると： −iℏ × ik e<sup>ikx</sup> ＝ ℏk e<sup>ikx</sup> ＝ <strong>p × e<sup>ikx</sup></strong>　（−i×i＝1 を使った）</span>
         <span class="step">つまり演算 −iℏ d/dx は、波の形を変えずに、運動量の値 p を前に取り出す</span>
       </div>
 
@@ -234,13 +234,13 @@
 
       <div class="quiz-head">確認クイズ</div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q1. 平面波 e^(ikx) に演算 −iℏ d/dx を施すと、何が起きる？</p>
+        <p class="quiz-q">Q1. 平面波 e<sup>ikx</sup> に演算 −iℏ d/dx を施すと、何が起きる？</p>
         <div class="choice-list">
           <button class="choice-btn">波が打ち消されて0になる</button>
           <button class="choice-btn">波の形はそのまま、運動量の値 p＝ℏk が係数として前に出てくる</button>
           <button class="choice-btn">波長が半分の波に変わる</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ d/dx e^(ikx)＝ik e^(ikx) に −iℏ を掛けると ℏk e^(ikx)＝p e^(ikx)。波に「運動量は？」と質問して答えを書いてもらう操作――これが運動量演算子だ。</div>
+        <div class="quiz-explain" hidden>正解！ d/dx e<sup>ikx</sup>＝ik e<sup>ikx</sup> に −iℏ を掛けると ℏk e<sup>ikx</sup>＝p e<sup>ikx</sup>。波に「運動量は？」と質問して答えを書いてもらう操作――これが運動量演算子だ。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
