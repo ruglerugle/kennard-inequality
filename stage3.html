@@ -664,7 +664,7 @@
 
     var N = 11;                       // 混ぜる材料の本数
     var K0 = 2 * Math.PI / 26;        // 中心の波数（波長26px）
-    var SMIN = 0.022, SMAX = 0.30;    // 混ぜる幅の下限・上限
+    var SMIN = 0.036, SMAX = 0.30;    // 混ぜる幅の下限・上限（下限は矢印が画面内に収まる値）
     var XC = 170, X0 = 20, X1 = 320;  // 描画範囲と中心
     var KSCALE = 620;                 // 波数の差 → 画面px
 
@@ -716,12 +716,21 @@
         pts.push(x + "," + (135 - 30 * (sum / wsum)).toFixed(1));
       }
       sumEl.setAttribute("points", pts.join(" "));
-      // かたまりの広がりは、包絡線が 1/e まで落ちる位置で測る
-      var half = 148;
-      for (var d = 2; d <= 148; d += 2) {
+      // かたまりの広がりは、包絡線が 1/e まで落ちる位置で測る。
+      // 刻みのまま採用すると矢印がカクつくので、またいだ2点のあいだを補間する
+      function envelope(d) {
         var e = 0;
         for (var m = 0; m < N; m++) e += ws[m] * Math.cos((ks[m] - K0) * d);
-        if (e / wsum < 0.368) { half = d; break; }
+        return e / wsum;
+      }
+      var half = 148, prevD = 0, prevE = 1;
+      for (var d = 1.5; d <= 148; d += 1.5) {
+        var e = envelope(d);
+        if (e < 0.368) {
+          half = prevD + (d - prevD) * (prevE - 0.368) / (prevE - e);
+          break;
+        }
+        prevD = d; prevE = e;
       }
       arrow("dx-line", "dx-h1", "dx-h2", XC, Math.max(10, half), 176);
     }
@@ -732,10 +741,8 @@
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (e) { running = e[0].isIntersecting; }).observe(svg);
     }
-    var last = 0;
     function loop(ms) {
-      if (running && ms - last > 33) {   // 約30fps
-        last = ms;
+      if (running) {                     // 毎フレーム描いて動きを滑らかに保つ
         var u = 0.5 - 0.5 * Math.cos(ms / 1500);
         draw(SMIN + (SMAX - SMIN) * u);
       }
