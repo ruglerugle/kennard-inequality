@@ -251,7 +251,7 @@
           <polygon class="mhead" id="dx-h2" points="220,176 213,173 213,179"></polygon>
           <text class="label" x="170" y="194" text-anchor="middle">かたまりの広がり ＝ Δx</text>
         </svg>
-        <div class="diagram-caption">上：混ぜた波長の分布（棒1本が材料の波1つ）。この横幅が <strong>Δp</strong> にあたる。下：それらを全部足し合わせてできる波。この山の広がりが <strong>Δx</strong>。混ぜる幅を広げると足し合わせた波は1か所に集中し、幅を狭めると波はどこまでも広がっていく――どちらか片方だけを小さくすることはできない</div>
+        <div class="diagram-caption">上：混ぜた波長の分布（棒1本が材料の波1つで、高さはその波長を混ぜた濃さ）。この山の横幅が <strong>Δp</strong> にあたる。下：それらを全部足し合わせてできる波。この山の広がりが <strong>Δx</strong>。混ぜる幅を広げると足し合わせた波は1か所に集中し、幅を狭めると波はどこまでも広がっていく――どちらか片方だけを小さくすることはできない</div>
       </div>
 
       <div class="dialogue-scene">
@@ -260,7 +260,7 @@
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">この上の棒グラフ、位置のときに描いた |ψ|² のグラフとそっくりですね。……ということは、位置に ψ(x) があったように、<strong>運動量のほうにも波動関数のようなものがある</strong>んですか？</div>
+          <div class="dialog-bubble">この上の棒グラフ、位置のときに描いた |ψ|² の山と形がそっくりですね。棒か曲線かの違いはありますけど、「どの値が出やすいか」を表しているという点では同じ役目に見えます。……ということは、位置に ψ(x) があったように、<strong>運動量のほうにも波動関数のようなものがある</strong>んですか？</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -594,23 +594,38 @@
     }
 
     function draw(S) {
-      var ks = [];
-      for (var j = 0; j < N; j++) {
+      var ks = [], ws = [], wsum = 0, wmax = 0, j;
+      for (j = 0; j < N; j++) {
         var k = K0 - S / 2 + (S * j) / (N - 1);
-        ks.push(k);
+        var u = 2 * j / (N - 1) - 1;      // −1 … ＋1
+        var w = Math.exp(-1.6 * u * u);   // 中心の波長ほど濃く混ぜる
+        ks.push(k); ws.push(w); wsum += w;
+        if (w > wmax) wmax = w;
         bars[j].setAttribute("x", (XC + (k - K0) * KSCALE - 2.5).toFixed(1));
+      }
+      // 棒の高さは |φ(p)|²（混ぜた濃さの2乗）に比例させる
+      for (j = 0; j < N; j++) {
+        var h = Math.max(1.5, 26 * Math.pow(ws[j] / wmax, 2));
+        bars[j].setAttribute("height", h.toFixed(1));
+        bars[j].setAttribute("y", (62 - h).toFixed(1));
       }
       arrow("dp-line", "dp-h1", "dp-h2", XC, Math.max(6, S / 2 * KSCALE), 78);
 
       var pts = [];
       for (var x = X0; x <= X1; x += 2) {
         var sum = 0;
-        for (var i = 0; i < N; i++) sum += Math.cos(ks[i] * (x - XC));
-        pts.push(x + "," + (135 - 30 * (sum / N)).toFixed(1));
+        for (var i = 0; i < N; i++) sum += ws[i] * Math.cos(ks[i] * (x - XC));
+        pts.push(x + "," + (135 - 30 * (sum / wsum)).toFixed(1));
       }
       sumEl.setAttribute("points", pts.join(" "));
-      // かたまりの幅は混ぜた幅に反比例する（包絡線が最初にゼロになる位置）
-      arrow("dx-line", "dx-h1", "dx-h2", XC, Math.min(2 * Math.PI / S, 148), 176);
+      // かたまりの広がりは、包絡線が 1/e まで落ちる位置で測る
+      var half = 148;
+      for (var d = 2; d <= 148; d += 2) {
+        var e = 0;
+        for (var m = 0; m < N; m++) e += ws[m] * Math.cos((ks[m] - K0) * d);
+        if (e / wsum < 0.368) { half = d; break; }
+      }
+      arrow("dx-line", "dx-h1", "dx-h2", XC, Math.max(10, half), 176);
     }
 
     if (REDUCED) { draw((SMIN + SMAX) / 2); return; }
