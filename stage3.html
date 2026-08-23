@@ -572,8 +572,21 @@
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いい引っかかり方だ。まず、挟むものを施した結果を書いてみよう。ψ を微分すれば ψ′ だから、−iℏ d/dx を施した結果は <strong>−iℏψ′</strong>。つまりサンドイッチの中身は <strong>ψ*·(−iℏψ′)</strong> だね。では、これを開いてみせよう。ψ は複素数だから、いつでも「<strong>絶対値 R</strong>」と「<strong>向きを決める角度 S</strong>」に分けて <strong>ψ ＝ R·e<sup>iS</sup></strong> と書ける。R も S も、場所ごとに決まる値だよ。これを代入して計算すると、サンドイッチの中身の実部は <strong>ℏ·S′(x)·|ψ(x)|²</strong> というきれいな形になるんだ（虚部のほうは、積分すると跡形もなく消えてしまう）。さて、この <strong>S′(x)</strong> は何だろうね。</div>
+          <div class="dialog-bubble">いい引っかかり方だ。まず、挟むものを施した結果を書いてみよう。ψ を微分すれば ψ′ だから、−iℏ d/dx を施した結果は <strong>−iℏψ′</strong>。つまりサンドイッチの中身は <strong>ψ*·(−iℏψ′)</strong> だね。では、これを開いてみせよう。ψ は複素数だから、いつでも「<strong>絶対値 R</strong>」と「<strong>向きを決める角度 S</strong>」に分けて <strong>ψ ＝ R·e<sup>iS</sup></strong> と書ける。R も S も、場所ごとに決まる値だよ。実際に代入して、順に計算してみよう。最後に顔を出す <strong>S′(x)</strong> が何なのか、考えながら見ていてごらん。</div>
         </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【サンドイッチの中身 ψ*·(−iℏψ′) を開く】　ψ ＝ R·e<sup>iS</sup>（R＝絶対値、S＝角度。どちらも場所ごとの値）</span>
+        <span class="step">① ψ を微分： ψ′ ＝ R′·e<sup>iS</sup> ＋ R·iS′·e<sup>iS</sup> ＝ (R′ ＋ iRS′)·e<sup>iS</sup>　（肩の微分 S′ が i とともに前に出る。e<sup>ikx</sup> で ik が出たのと同じ規則）</span>
+        <span class="step">② 複素共役： ψ* ＝ R·e<sup>−iS</sup>　（向きを逆にするだけ）</span>
+        <span class="step">③ 掛け合わせる： ψ*ψ′ ＝ R·e<sup>−iS</sup>·(R′＋iRS′)·e<sup>iS</sup> ＝ R(R′＋iRS′) ＝ RR′ ＋ iR²S′　（<strong>向きの e が打ち消し合って消える</strong>）</span>
+        <span class="step">④ −iℏ を掛ける： −iℏ(RR′＋iR²S′) ＝ <strong>ℏR²S′</strong> − iℏRR′　（−i×i＝1 を使った）</span>
+        <span class="step">⑤ R²＝|ψ|² だから　<strong>実部 ＝ ℏ·S′(x)·|ψ(x)|²</strong>、　虚部 ＝ −ℏRR′</span>
+        <span class="step">※ 虚部は −ℏRR′ ＝ −(ℏ/2)(|ψ|²)′ なので、積分すると両端の値の差になり、遠方で ψ→0 だから <strong>きれいに消える</strong></span>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
