@@ -249,20 +249,24 @@
       </div>
 
       <div class="diagram-box">
-        <svg class="kq-svg" id="mix-svg" viewBox="0 0 340 200" width="100%" role="img" aria-label="上段は混ぜた波長の分布を表す棒グラフ、下段はそれらを足し合わせてできた波。混ぜる波長の幅を広げると、できあがる波のかたまりが狭くなり、幅を狭めるとかたまりが広がるという関係が、繰り返し動いて示される">
+        <svg class="kq-svg" id="mix-svg" viewBox="0 0 340 212" width="100%" role="img" aria-label="上段は混ぜた波長の分布を表す棒グラフ、下段はそれらを足し合わせてできた波。混ぜる波長の幅を広げると、できあがる波のかたまりが狭くなり、幅を狭めるとかたまりが広がるという関係が、繰り返し動いて示される">
           <text class="strong" x="170" y="14" text-anchor="middle">混ぜる幅を広げるほど、かたまりは狭くなる</text>
+          <text class="label" x="20" y="30">混ぜた濃さ</text>
+          <text class="label" x="318" y="58" text-anchor="end">運動量 p</text>
           <line class="mline" x1="20" y1="62" x2="320" y2="62"></line>
           <g id="mix-bars"></g>
           <line class="marr" id="dp-line" x1="150" y1="78" x2="190" y2="78"></line>
           <polygon class="mhead" id="dp-h1" points="150,78 157,75 157,81"></polygon>
           <polygon class="mhead" id="dp-h2" points="190,78 183,75 183,81"></polygon>
           <text class="label" x="170" y="96" text-anchor="middle">混ぜた波長の幅 ＝ Δp</text>
+          <text class="label" x="20" y="100">波 ψ(x)</text>
+          <text class="label" x="318" y="178" text-anchor="end">位置 x</text>
           <line class="mline" x1="20" y1="135" x2="320" y2="135"></line>
           <polyline class="wave" id="mix-sum" points=""></polyline>
-          <line class="marr" id="dx-line" x1="120" y1="176" x2="220" y2="176"></line>
-          <polygon class="mhead" id="dx-h1" points="120,176 127,173 127,179"></polygon>
-          <polygon class="mhead" id="dx-h2" points="220,176 213,173 213,179"></polygon>
-          <text class="label" x="170" y="194" text-anchor="middle">かたまりの広がり ＝ Δx</text>
+          <line class="marr" id="dx-line" x1="120" y1="188" x2="220" y2="188"></line>
+          <polygon class="mhead" id="dx-h1" points="120,188 127,185 127,191"></polygon>
+          <polygon class="mhead" id="dx-h2" points="220,188 213,185 213,191"></polygon>
+          <text class="label" x="170" y="206" text-anchor="middle">かたまりの広がり ＝ Δx</text>
         </svg>
         <div class="diagram-caption">上：混ぜた波長の分布（棒1本が材料の波1つで、高さはその波長を混ぜた濃さ）。この山の横幅が <strong>Δp</strong> にあたる。下：それらを全部足し合わせてできる波。この山の広がりが <strong>Δx</strong>。混ぜる幅を広げると足し合わせた波は1か所に集中し、幅を狭めると波はどこまでも広がっていく――どちらか片方だけを小さくすることはできない</div>
       </div>
@@ -775,7 +779,7 @@
         }
         prevD = d; prevE = e;
       }
-      arrow("dx-line", "dx-h1", "dx-h2", XC, Math.max(10, half), 176);
+      arrow("dx-line", "dx-h1", "dx-h2", XC, Math.max(10, half), 188);
     }
 
     if (REDUCED) { draw((SMIN + SMAX) / 2); return; }
