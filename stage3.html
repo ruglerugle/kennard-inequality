@@ -44,6 +44,11 @@
   .kq-svg .mline{stroke:var(--line);stroke-width:1}
   .kq-svg .ktick{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
   .kq-svg .karr{stroke:var(--muted);stroke-width:1.5}
+  .kq-svg .sbox{fill:var(--paper2);stroke:var(--line);stroke-width:1.2;rx:5}
+  .kq-svg .sfillA{fill:rgba(217,164,65,.30);stroke:var(--gold-dark);stroke-width:1.5;rx:5}
+  .kq-svg .sfillB{fill:rgba(47,111,166,.22);stroke:#2f6fa6;stroke-width:1.5;rx:5}
+  .kq-svg .stxt{fill:var(--ink);font-size:13px;font-weight:800}
+  .kq-svg .sint{fill:var(--ink);font-size:21px}
   .kq-svg .kaxis{stroke:var(--muted);stroke-width:1.5}
   .kq-svg .kwaveB{fill:none;stroke:#2f6fa6;stroke-width:2}
   .kq-svg .klineA{stroke:var(--gold-dark);stroke-width:2.5;fill:none;stroke-linecap:round}
@@ -517,6 +522,37 @@
           </div>
           <div class="dialog-bubble">その比喩はいいね。この「質問する操作」を<strong>運動量演算子</strong>と呼ぶ。1925年から26年にかけて、ハイゼンベルクやシュレーディンガーたちが量子力学を建設したとき、一番の発明がこれだった――<strong>物理量を「数」ではなく「操作」で表す</strong>という発想の転換だよ。位置はどうかというと、実はもう使っている。⟨x⟩＝∫ψ* x ψ dx という式は、「ψ* と ψ で挟んで、間に x を掛けて、積分する」というサンドイッチの形だ。運動量の平均も同じサンドイッチで、間に挟むものを x から −iℏ d/dx に替えるだけなんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" viewBox="0 0 340 178" width="100%" role="img" aria-label="平均を求める式を、ψ*とψでものを挟んだサンドイッチとして描いた図。上は位置の平均で真ん中にx、下は運動量の平均で真ん中に−iℏd/dxが入る。外側のψ*とψ、そして積分は共通で、真ん中の具だけが入れ替わる">
+          <text class="strong" x="170" y="14" text-anchor="middle">同じサンドイッチ、具を入れ替えるだけ</text>
+          <text class="label" x="62" y="38">位置の平均 ⟨x⟩</text>
+          <text class="sint" x="62" y="68">∫</text>
+          <rect class="sbox" x="76" y="46" width="40" height="30"></rect>
+          <text class="stxt" x="96" y="66" text-anchor="middle">ψ*</text>
+          <rect class="sfillA" x="120" y="46" width="90" height="30"></rect>
+          <text class="stxt" x="165" y="66" text-anchor="middle">x</text>
+          <rect class="sbox" x="214" y="46" width="40" height="30"></rect>
+          <text class="stxt" x="234" y="66" text-anchor="middle">ψ</text>
+          <text class="stxt" x="260" y="66">dx</text>
+          <line class="karr" x1="165" y1="84" x2="165" y2="106"></line>
+          <polygon class="mhead" points="165,113 160,102 170,102"></polygon>
+          <text class="label" x="178" y="101">ここだけ替える</text>
+          <text class="label" x="62" y="116">運動量の平均 ⟨p⟩</text>
+          <text class="sint" x="62" y="146">∫</text>
+          <rect class="sbox" x="76" y="124" width="40" height="30"></rect>
+          <text class="stxt" x="96" y="144" text-anchor="middle">ψ*</text>
+          <rect class="sfillB" x="120" y="124" width="90" height="30"></rect>
+          <text class="stxt" x="165" y="144" text-anchor="middle">−iℏ d/dx</text>
+          <rect class="sbox" x="214" y="124" width="40" height="30"></rect>
+          <text class="stxt" x="234" y="144" text-anchor="middle">ψ</text>
+          <text class="stxt" x="260" y="144">dx</text>
+        </svg>
+        <div class="diagram-caption">平均を求める式の形。<strong>外側の ψ* と ψ、それを足し上げる ∫ … dx は、位置でも運動量でも共通</strong>で、変わるのは真ん中に挟むものだけ。位置なら「x を掛ける」、運動量なら「−iℏ d/dx を施す」。この共通の型があるおかげで、位置のときに作った仕組みが運動量にもそのまま使える</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
