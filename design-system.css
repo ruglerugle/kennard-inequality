@@ -112,7 +112,7 @@ a.head-reset{text-decoration:none;display:inline-flex;align-items:center}
 }
 
 /* メインエリア */
-.main-area{background:var(--paper);border:1px solid #e3d8bd;border-radius:12px;padding:18px 18px 20px;box-shadow:var(--shadow);min-height:520px}
+.main-area{background:var(--paper);border:1px solid #e3d8bd;border-radius:12px;padding:18px 18px 20px;box-shadow:var(--shadow);min-height:520px;min-width:0}
 .chapter-head{margin-bottom:12px}
 .chapter-badge{display:inline-block;background:linear-gradient(#e8c07f,var(--gold-dark));color:#3a2705;border-radius:7px;
   padding:4px 11px;font-size:12px;font-weight:950;letter-spacing:.02em;margin-right:8px;box-shadow:0 2px 0 rgba(0,0,0,.15)}
