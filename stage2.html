@@ -31,6 +31,8 @@
   .kq-svg .bar{fill:rgba(217,164,65,.35);stroke:var(--gold-dark);stroke-width:.8}
   .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+  .kq-svg .paxis{stroke:var(--muted);stroke-width:1.5}
+  .kq-svg .pah{fill:var(--muted)}
   /* 実験室図の座標軸オーバーレイ */
   .axes-svg .axw{stroke:#fff;stroke-opacity:.8;stroke-width:8;fill:none;stroke-linecap:round}
   .axes-svg .axx{stroke:#c9473c;stroke-width:3.5;fill:none;stroke-linecap:round}
@@ -251,19 +253,23 @@
       </div>
 
       <div class="diagram-box">
-        <svg class="kq-svg" viewBox="0 0 320 180" width="100%" role="img" aria-label="確率密度の曲線の下に細い長方形が並び、その面積の合計が確率になることを示す図">
-          <line class="base" x1="15" y1="145" x2="305" y2="145"></line>
-          <rect class="bar" x="120" y="85" width="16" height="60"></rect>
-          <rect class="bar" x="136" y="62" width="16" height="83"></rect>
-          <rect class="bar" x="152" y="55" width="16" height="90"></rect>
-          <rect class="bar" x="168" y="68" width="16" height="77"></rect>
-          <rect class="bar" x="184" y="98" width="16" height="47"></rect>
-          <path class="wave" d="M30 143 Q80 140 110 110 Q140 55 160 53 Q185 55 215 115 Q250 141 300 144"></path>
-          <text class="strong" x="30" y="22">|ψ(x)|² の曲線</text>
-          <text class="label" x="30" y="38">曲線の下の面積 ＝ その区間で見つかる確率</text>
-          <text class="label" x="118" y="168">細い短冊に切って足す ＝ 積分 ∫</text>
+        <svg class="kq-svg" viewBox="0 0 320 192" width="100%" role="img" aria-label="横軸が位置x、縦軸が確率密度のグラフ。なめらかな山なりの曲線の下に細い短冊が並んでいて、短冊の面積を足し合わせるとその区間で電子が見つかる確率になることを示している">
+          <text class="strong" x="170" y="15" text-anchor="middle">細い短冊に切って、足す</text>
+          <line class="paxis" x1="40" y1="150" x2="303" y2="150"></line>
+          <polygon class="pah" points="311,150 300,146 300,154"></polygon>
+          <line class="paxis" x1="40" y1="150" x2="40" y2="38"></line>
+          <polygon class="pah" points="40,30 36,41 44,41"></polygon>
+          <text class="strong" x="46" y="34">確率密度 |ψ(x)|²</text>
+          <text class="label" x="300" y="168" text-anchor="end">位置 x</text>
+          <rect class="bar" x="120" y="105.8" width="16" height="44.2"></rect>
+          <rect class="bar" x="136" y="79.2" width="16" height="70.8"></rect>
+          <rect class="bar" x="152" y="59.0" width="16" height="91.0"></rect>
+          <rect class="bar" x="168" y="56.5" width="16" height="93.5"></rect>
+          <rect class="bar" x="184" y="73.0" width="16" height="77.0"></rect>
+          <polyline class="wave" points="40,149.9 42,149.9 44,149.9 46,149.9 48,149.9 50,149.8 52,149.8 54,149.7 56,149.7 58,149.6 60,149.5 62,149.4 64,149.3 66,149.1 68,149.0 70,148.8 72,148.5 74,148.3 76,147.9 78,147.6 80,147.2 82,146.7 84,146.2 86,145.6 88,144.9 90,144.1 92,143.2 94,142.3 96,141.2 98,140.0 100,138.7 102,137.2 104,135.7 106,133.9 108,132.1 110,130.1 112,127.9 114,125.6 116,123.2 118,120.6 120,117.9 122,115.1 124,112.1 126,109.0 128,105.8 130,102.6 132,99.2 134,95.9 136,92.5 138,89.1 140,85.7 142,82.4 144,79.2 146,76.0 148,73.0 150,70.1 152,67.5 154,65.0 156,62.7 158,60.8 160,59.0 162,57.6 164,56.5 166,55.7 168,55.2 170,55.0 172,55.2 174,55.7 176,56.5 178,57.6 180,59.0 182,60.8 184,62.7 186,65.0 188,67.5 190,70.1 192,73.0 194,76.0 196,79.2 198,82.4 200,85.7 202,89.1 204,92.5 206,95.9 208,99.2 210,102.6 212,105.8 214,109.0 216,112.1 218,115.1 220,117.9 222,120.6 224,123.2 226,125.6 228,127.9 230,130.1 232,132.1 234,133.9 236,135.7 238,137.2 240,138.7 242,140.0 244,141.2 246,142.3 248,143.2 250,144.1 252,144.9 254,145.6 256,146.2 258,146.7 260,147.2 262,147.6 264,147.9 266,148.3 268,148.5 270,148.8 272,149.0 274,149.1 276,149.3 278,149.4 280,149.5 282,149.6 284,149.7 286,149.7 288,149.8 290,149.8 292,149.9 294,149.9 296,149.9 298,149.9 300,149.9 302,150.0 304,150.0"></polyline>
+          <text class="label" x="110" y="185">短冊の面積を全部足す ＝ 積分 ∫</text>
         </svg>
-        <div class="diagram-caption">確率密度 |ψ(x)|² のグラフ。ある区間で電子が見つかる確率は、その区間の曲線の下の面積。面積は「幅 dx の短冊 |ψ(x)|²·dx の足し合わせ」で、これを無限に細かくしたものが積分 ∫|ψ(x)|² dx</div>
+        <div class="diagram-caption">横軸が位置 <strong>x</strong>、縦軸が<strong>確率密度 |ψ(x)|²</strong>。ある区間で電子が見つかる確率は、その区間の<strong>曲線の下の面積</strong>にあたる。面積は「幅 dx の短冊 |ψ(x)|²·dx」を足し合わせたもので、短冊を無限に細くしたものが積分 ∫|ψ(x)|² dx</div>
       </div>
 
       <div class="dialogue-scene">
