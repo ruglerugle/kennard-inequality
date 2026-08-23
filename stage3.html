@@ -38,6 +38,10 @@
   .kq-svg .lineB{stroke:var(--gold);stroke-width:2.5;fill:none;stroke-linecap:round}
   .kq-svg .lbA{fill:#b5504a;font-size:12px;font-weight:900}
   .kq-svg .lbB{fill:var(--gold-dark);font-size:12px;font-weight:900}
+  .kq-svg .mixbar{fill:#2f6fa6}
+  .kq-svg .marr{stroke:var(--muted);stroke-width:1.5}
+  .kq-svg .mhead{fill:var(--muted)}
+  .kq-svg .mline{stroke:var(--line);stroke-width:1}
 </style>
 </head>
 <body>
@@ -229,6 +233,28 @@
           </div>
           <div class="dialog-bubble">そのとおり。ここで、いま私たちが追いかけている式の正体が少し見えてくるね。<strong>Δx は「ψ がどれだけ広がっているか」、Δp は「波長をどれだけ混ぜたか」</strong>。この2つは無関係ではいられない。ψ を狭い範囲に閉じ込めようとすれば、たくさんの波長を混ぜないと形が作れないからね。Δx·Δp ≥ ℏ/2 という式は、その<strong>「広がり」と「混ぜ具合」のせめぎ合い</strong>を書いたものなんだよ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" id="mix-svg" viewBox="0 0 340 200" width="100%" role="img" aria-label="上段は混ぜた波長の分布を表す棒グラフ、下段はそれらを足し合わせてできた波。混ぜる波長の幅を広げると、できあがる波のかたまりが狭くなり、幅を狭めるとかたまりが広がるという関係が、繰り返し動いて示される">
+          <text class="strong" x="170" y="14" text-anchor="middle">混ぜる幅を広げるほど、かたまりは狭くなる</text>
+          <line class="mline" x1="20" y1="62" x2="320" y2="62"></line>
+          <g id="mix-bars"></g>
+          <line class="marr" id="dp-line" x1="150" y1="78" x2="190" y2="78"></line>
+          <polygon class="mhead" id="dp-h1" points="150,78 157,75 157,81"></polygon>
+          <polygon class="mhead" id="dp-h2" points="190,78 183,75 183,81"></polygon>
+          <text class="label" x="170" y="96" text-anchor="middle">混ぜた波長の幅 ＝ Δp</text>
+          <line class="mline" x1="20" y1="135" x2="320" y2="135"></line>
+          <polyline class="wave" id="mix-sum" points=""></polyline>
+          <line class="marr" id="dx-line" x1="120" y1="176" x2="220" y2="176"></line>
+          <polygon class="mhead" id="dx-h1" points="120,176 127,173 127,179"></polygon>
+          <polygon class="mhead" id="dx-h2" points="220,176 213,173 213,179"></polygon>
+          <text class="label" x="170" y="194" text-anchor="middle">かたまりの広がり ＝ Δx</text>
+        </svg>
+        <div class="diagram-caption">上：混ぜた波長の分布（棒1本が材料の波1つ）。この横幅が <strong>Δp</strong> にあたる。下：それらを全部足し合わせてできる波。この山の広がりが <strong>Δx</strong>。混ぜる幅を広げると足し合わせた波は1か所に集中し、幅を狭めると波はどこまでも広がっていく――どちらか片方だけを小さくすることはできない</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -515,6 +541,80 @@
     var ws = document.getElementById("wave-short");
     if (wl) wl.setAttribute("d", makePath(55, 22, 150, 15, 305));
     if (ws) ws.setAttribute("d", makePath(150, 22, 34, 15, 305));
+  })();
+</script>
+<script>
+  // 「混ぜる幅」と「かたまりの広がり」のシーソーを動かす
+  (function () {
+    var svg = document.getElementById("mix-svg");
+    if (!svg) return;
+    var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var N = 11;                       // 混ぜる材料の本数
+    var K0 = 2 * Math.PI / 26;        // 中心の波数（波長26px）
+    var SMIN = 0.022, SMAX = 0.30;    // 混ぜる幅の下限・上限
+    var XC = 170, X0 = 20, X1 = 320;  // 描画範囲と中心
+    var KSCALE = 620;                 // 波数の差 → 画面px
+
+    var barsG = document.getElementById("mix-bars");
+    var bars = [];
+    for (var j = 0; j < N; j++) {
+      var r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      r.setAttribute("class", "mixbar");
+      r.setAttribute("width", 5);
+      r.setAttribute("y", 36);
+      r.setAttribute("height", 26);
+      barsG.appendChild(r);
+      bars.push(r);
+    }
+    var sumEl = document.getElementById("mix-sum");
+
+    function arrow(idLine, idH1, idH2, cx, half, y) {
+      var a = cx - half, b = cx + half;
+      var L = document.getElementById(idLine);
+      L.setAttribute("x1", a.toFixed(1)); L.setAttribute("x2", b.toFixed(1));
+      document.getElementById(idH1).setAttribute("points",
+        a.toFixed(1) + "," + y + " " + (a + 7).toFixed(1) + "," + (y - 3) + " " + (a + 7).toFixed(1) + "," + (y + 3));
+      document.getElementById(idH2).setAttribute("points",
+        b.toFixed(1) + "," + y + " " + (b - 7).toFixed(1) + "," + (y - 3) + " " + (b - 7).toFixed(1) + "," + (y + 3));
+    }
+
+    function draw(S) {
+      var ks = [];
+      for (var j = 0; j < N; j++) {
+        var k = K0 - S / 2 + (S * j) / (N - 1);
+        ks.push(k);
+        bars[j].setAttribute("x", (XC + (k - K0) * KSCALE - 2.5).toFixed(1));
+      }
+      arrow("dp-line", "dp-h1", "dp-h2", XC, Math.max(6, S / 2 * KSCALE), 78);
+
+      var pts = [];
+      for (var x = X0; x <= X1; x += 2) {
+        var sum = 0;
+        for (var i = 0; i < N; i++) sum += Math.cos(ks[i] * (x - XC));
+        pts.push(x + "," + (135 - 30 * (sum / N)).toFixed(1));
+      }
+      sumEl.setAttribute("points", pts.join(" "));
+      // かたまりの幅は混ぜた幅に反比例する（包絡線が最初にゼロになる位置）
+      arrow("dx-line", "dx-h1", "dx-h2", XC, Math.min(2 * Math.PI / S, 148), 176);
+    }
+
+    if (REDUCED) { draw((SMIN + SMAX) / 2); return; }
+
+    var running = true;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) { running = e[0].isIntersecting; }).observe(svg);
+    }
+    var last = 0;
+    function loop(ms) {
+      if (running && ms - last > 33) {   // 約30fps
+        last = ms;
+        var u = 0.5 - 0.5 * Math.cos(ms / 1500);
+        draw(SMIN + (SMAX - SMIN) * u);
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
   })();
 </script>
 <script>KQ.initStagePage(3);</script>
