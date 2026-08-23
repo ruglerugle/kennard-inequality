@@ -267,7 +267,21 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">あるよ。ふつう <strong>φ(p)</strong>（ファイ）と書いて、<strong>|φ(p)|² が運動量の確率の濃さ</strong>を表す。ψ(x) と完全に対をなす相棒だ。ただし ψ に p を代入したものではなくて、まったく別の関数でね。ψ(x) が「どの場所にどれだけいるか」を、φ(p) が「どの波長をどれだけ混ぜたか」を語っている。<strong>同じ状態を、場所の言葉で書くか、波長の言葉で書くかの違い</strong>なんだ。上の図の棒の高さが、まさに |φ(p)|² だよ。ψ から φ を作る操作は<strong>フーリエ変換</strong>といって、実はケナード自身の1927年の論文は、この道具を使って証明している。……でも今日の私たちは、それを使わずに済ませるよ。次に手に入れる装置を使うと、<strong>φ を一度も計算しないまま、ψ(x) のままで ⟨p⟩ も Δp も求まってしまう</strong>んだ。道具は少ないほうがいいからね。</div>
+          <div class="dialog-bubble">あるよ。ふつう <strong>φ(p)</strong>（ファイ）と書いて、<strong>|φ(p)|² が運動量の確率の濃さ</strong>を表す。ψ(x) と完全に対をなす相棒だ。ただし ψ に p を代入したものではなくて、まったく別の関数でね。ψ(x) が「どの場所にどれだけいるか」を、φ(p) が「どの波長をどれだけ混ぜたか」を語っている。<strong>同じ状態を、場所の言葉で書くか、波長の言葉で書くかの違い</strong>なんだ。上の図の棒の高さが、まさに |φ(p)|² だよ。そしてここが大事なところ。<strong>Δx が |ψ(x)|² の広がりだったように、Δp の本当の意味は「|φ(p)|² の広がり」</strong>なんだ。2つは完全に対等で、証明したい Δx·Δp ≥ ℏ/2 は「<strong>ψ と φ の両方を同時に細くはできない</strong>」と言い換えられる。上の図がまさにそれを描いているね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">そちらのほうが、よほど分かりやすい定義に思えます。Δx は ψ の山の幅、Δp は φ の山の幅。……ではそれで進めないんですか？ ψ から φ を作る手続きが、よほど大変なのでしょうか。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よく見ている。ψ から φ を作る操作は<strong>フーリエ変換</strong>といって、波を平面波の成分に分解する道具だ。<strong>ケナード自身の1927年の論文は、まさにこの道を通っている</strong>。ただしこの道具を持ち込むと、それが本当に正しく確率を移し替えているかを保証する定理まで、もう一つ用意しなければならない。荷物が2つ増えるんだ。……ところが不思議なことに、<strong>φ を一度も作らず、ψ(x) のままで計算しても、まったく同じ Δp が出てくる</strong>。その近道を通してくれるのが、いま手に入れかけている微分なんだよ。翌1928年、ワイルとパウリが「フーリエの道を通らなくても証明できる」と示して、それ以来こちらが主流になった。<strong>意味を掴むのは φ、計算するのは微分</strong>――この分業だけ覚えておけば、今日は φ とお別れして大丈夫だ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -433,6 +447,7 @@
         <span class="step">運動量の平均： ⟨p⟩ ＝ ∫ ψ* (−iℏ ψ′) dx　（サンドイッチの具を −iℏ d/dx に）</span>
         <span class="step">運動量の2乗平均： ⟨p²⟩ ＝ ∫ ψ* (−iℏ)² ψ″ dx ＝ −ℏ² ∫ ψ* ψ″ dx</span>
         <span class="step">⟨p⟩＝0 と下ごしらえ済みなので： (Δp)² ＝ ⟨p²⟩　（分散＝2乗の平均）</span>
+        <span class="step">※ この式で出る Δp は、<strong>|φ(p)|² の広がりとして測った Δp とぴったり一致する</strong>。意味は φ、計算は微分という分業</span>
       </div>
 
       <div class="dialogue-scene">
