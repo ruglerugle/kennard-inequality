@@ -128,14 +128,28 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">ずれは −2, 0, 0, +1, +1 です。……あ、これをそのまま平均したらダメですね。(−2＋0＋0＋1＋1)÷5＝0。プラスのずれとマイナスのずれが打ち消し合って、どんなにばらついていても答えが0になってしまいます。ずれの「符号」ではなく「大きさ」を見たいんだから……そうだ、<strong>2乗</strong>すればマイナスが消えます！</div>
+          <div class="dialog-bubble">ずれは −2, 0, 0, +1, +1 です。……あ、これをそのまま平均したらダメですね。(−2＋0＋0＋1＋1)÷5＝0。プラスのずれとマイナスのずれが打ち消し合って、どんなにばらついていても答えが0になってしまいます。ずれの「符号」ではなく「大きさ」を見たいわけですから……<strong>絶対値をとってから足せば</strong>よさそうです。2＋0＋0＋1＋1＝4、5で割って 0.8。これで「ばらつきは 0.8」と言えませんか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">いい筋だよ。それは実際に使われている測り方で、<strong>平均絶対偏差</strong>という名前もついている。ばらつきの指標としては、なんの問題もない。……ただ、この先の道のりを考えると、ひとつ困ったことがあってね。絶対値は「マイナスなら符号をひっくり返す」という操作だから、グラフに描くと<strong>0のところで折れ曲がる</strong>。V字の角ができるんだ。ところが私たちはこれから、微分や積分といった<strong>なめらかさを前提にした道具</strong>で証明を組み立てる。出発点の定義に角があると、そこで手が止まってしまうんだよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">角を作らずに符号を消す……あっ、<strong>2乗</strong>すればいいんですね。マイナスもプラスも2乗すれば0以上になりますし、y＝x² のグラフはなめらかな放物線で、どこにも折れ目がありません。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">それがガウスたちの答えと同じ道だよ。ずれの2乗は 4, 0, 0, 1, 1。この平均 (4+0+0+1+1)÷5＝1.2 を<strong>分散</strong>と呼ぶ。ただし2乗したせいで単位が「点²」みたいになってしまうから、最後に平方根をとって単位を元に戻す。√1.2 ≈ 1.1。これが<strong>標準偏差</strong>――「ばらつきの幅」の世界標準の定義だ。</div>
+          <div class="dialog-bubble">それがガウスたちの答えと同じ道だよ。ずれの2乗は 4, 0, 0, 1, 1。この平均 (4+0+0+1+1)÷5＝1.2 を<strong>分散</strong>と呼ぶ。ただし2乗したせいで単位が「点²」みたいになってしまうから、最後に平方根をとって単位を元に戻す。√1.2 ≈ 1.1。これが<strong>標準偏差</strong>――「ばらつきの幅」の世界標準の定義だ。ついでに言うと、2乗にはもうひとつ強みがある。<strong>展開できる</strong>ことだ。(a−b)²＝a²−2ab＋b² のようにね。絶対値にはこれができない。その強みが、後のステージで証明そのものを動かすことになるよ。</div>
         </div>
       </div>
 
