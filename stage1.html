@@ -43,6 +43,10 @@
   .kq-svg .spot{fill:var(--gold-dark)}
   .kq-svg .lbA{fill:var(--gold-dark);font-size:11px;font-weight:900}
   .kq-svg .lbB{fill:#2f6fa6;font-size:11px;font-weight:900}
+  .kq-svg .wfaint{fill:none;stroke:var(--line);stroke-width:2}
+  .kq-svg .win{fill:rgba(197,154,58,.10);stroke:var(--gold-dark);stroke-width:1.6}
+  .kq-svg .thin{stroke:var(--line);stroke-width:1;stroke-dasharray:4 3}
+  .kq-svg .qmark{fill:var(--gold-dark);font-size:12px;font-weight:900}
 </style>
 </head>
 <body>
@@ -264,6 +268,41 @@
           </div>
           <div class="dialog-bubble">なんだ、私が「両方測れている」と思ったのは、<strong>そもそも禁じられていない組み合わせ</strong>だったんですね。……では、意地悪な質問をします。同じ向きで粘ったらどうなりますか。細いすき間を通してから測れば、進行方向の位置も絞れるはずです。そのうえで運動量を読めば――</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" id="cut-svg" viewBox="0 0 340 224" width="100%" role="img" aria-label="長く伸びた波を、幅Δxのすき間で切り取る図。切り取ったあとに残るのは1個半ほどの波の切れ端で、その波長を測って p＝h/λ を使おうという作戦">
+          <text class="strong" x="14" y="16">① 幅 Δx のすき間で、波を切り取る</text>
+          <text class="label" x="250" y="16">進行方向</text>
+          <line class="arrow" x1="296" y1="12" x2="320" y2="12"></line>
+          <polygon class="arrowhead" points="326,12 317,8 317,16"></polygon>
+          <line class="base" x1="14" y1="58" x2="326" y2="58"></line>
+          <path class="wfaint" id="cut-w1"></path>
+          <path class="wave" id="cut-w2"></path>
+          <rect class="win" x="150" y="30" width="40" height="56" rx="3"></rect>
+          <line class="arrow" x1="150" y1="96" x2="190" y2="96"></line>
+          <polygon class="arrowhead" points="150,96 156,93 156,99"></polygon>
+          <polygon class="arrowhead" points="190,96 184,93 184,99"></polygon>
+          <text class="strong" x="170" y="110" text-anchor="middle">Δx</text>
+          <line class="thin" x1="150" y1="88" x2="150" y2="152"></line>
+          <line class="thin" x1="190" y1="88" x2="190" y2="152"></line>
+          <line class="arrow" x1="170" y1="118" x2="170" y2="146"></line>
+          <polygon class="arrowhead" points="170,152 166,143 174,143"></polygon>
+          <text class="strong" x="14" y="184">② 残ったのは、これだけ</text>
+          <line class="base" x1="150" y1="180" x2="190" y2="180"></line>
+          <path class="wave" id="cut-w3"></path>
+          <line class="arrow" x1="150" y1="202" x2="190" y2="202"></line>
+          <polygon class="arrowhead" points="150,202 156,199 156,205"></polygon>
+          <polygon class="arrowhead" points="190,202 184,199 184,205"></polygon>
+          <text class="strong" x="170" y="216" text-anchor="middle">Δx</text>
+          <text class="strong" x="206" y="170">③ この波長 λ を測って</text>
+          <text class="strong" x="206" y="192">　 p ＝ h/λ</text>
+          <text class="qmark" x="206" y="214">　 ……のはず？</text>
+        </svg>
+        <div class="diagram-caption">うさ美の作戦。長く伸びた波を<strong>幅 Δx のすき間で切り取れば</strong>、電子のいる場所は Δx の中に絞れる。あとは残った切れ端の<strong>波長 λ</strong> を読んで p＝h/λ に入れれば、位置も運動量も同じ向きで手に入る――そう見える。ところが切れ端に残っている波は<strong>1個半ほど</strong>しかない。この短さで、波長は本当に読めるだろうか</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
@@ -385,5 +424,48 @@
 
 <script src="js/progress.js"></script>
 <script>KQ.initStagePage(1);</script>
+
+<script>
+(function(){
+  var svg = document.getElementById('cut-svg');
+  if (!svg) return;
+  var w1 = document.getElementById('cut-w1'), w2 = document.getElementById('cut-w2'), w3 = document.getElementById('cut-w3');
+  var K = 2 * Math.PI / 26, XL = 150, XR = 190;
+
+  function path(x0, x1, axis, amp, t) {
+    var d = '', first = true;
+    for (var x = x0; x <= x1 + 0.001; x += 2) {
+      var y = axis - amp * Math.sin(K * (x - t));
+      d += (first ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(2);
+      first = false;
+    }
+    return d;
+  }
+  function draw(t) {
+    w1.setAttribute('d', path(14, XL, 58, 15, t) + ' ' + path(XR, 326, 58, 15, t));
+    w2.setAttribute('d', path(XL, XR, 58, 15, t));
+    w3.setAttribute('d', path(XL, XR, 180, 11, t));
+  }
+  draw(0);
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var t = 0, running = false, raf = null;
+  function loop() {
+    if (!running) return;
+    t += 0.35;
+    if (t > 26) t -= 26;
+    draw(t);
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      var vis = es[0].isIntersecting;
+      if (vis && !running) { running = true; loop(); }
+      else if (!vis && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
+})();
+</script>
 </body>
 </html>
