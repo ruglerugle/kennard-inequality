@@ -32,6 +32,17 @@
   .kq-svg .arrowhead{fill:var(--muted)}
   .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+  .kq-svg .fieldbox{fill:rgba(47,111,166,.06);stroke:#2f6fa6;stroke-width:1;stroke-dasharray:4 4}
+  .kq-svg .fx{fill:none;stroke:#2f6fa6;stroke-width:1.2}
+  .kq-svg .traj1{fill:none;stroke:var(--gold-dark);stroke-width:2.4}
+  .kq-svg .traj2{fill:none;stroke:#2f6fa6;stroke-width:2.4}
+  .kq-svg .beam{fill:none;stroke:var(--gold-dark);stroke-width:2.2}
+  .kq-svg .thru{fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:5 4}
+  .kq-svg .atom{fill:var(--muted)}
+  .kq-svg .det{fill:var(--line);stroke:var(--muted);stroke-width:1}
+  .kq-svg .spot{fill:var(--gold-dark)}
+  .kq-svg .lbA{fill:var(--gold-dark);font-size:11px;font-weight:900}
+  .kq-svg .lbB{fill:#2f6fa6;font-size:11px;font-weight:900}
 </style>
 </head>
 <body>
@@ -181,6 +192,57 @@
           </div>
           <div class="dialog-bubble">もっともな質問だ。どちらも実在する装置の話だよ。<strong>位置</strong>は簡単で、蛍光スクリーンや検出器にぶつけて、<strong>光った場所を読む</strong>。二重スリット実験でスクリーンに点が光ったね、あれだ。その点の座標が、その1個の測定値になる。……<strong>運動量</strong>のほうは2通りある。ひとつは<strong>磁場で曲げる</strong>方法。磁場の中では電荷を持った粒子は円を描いて曲がって、その半径は <strong>r＝p/(qB)</strong>（q は電荷、B は磁場の強さ）――勢いのある粒子ほど曲がりにくいから、<strong>半径を測れば p が出る</strong>。もうひとつは<strong>結晶に当てて、回折する角度を測る</strong>方法だ。角度から波長 λ が分かって、<strong>p＝h/λ</strong> で運動量になる。……こちらは面白くてね。きみが手がかりにした p＝h/λ が、そのまま<strong>測定装置として働いている</strong>んだよ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" viewBox="0 0 340 322" width="100%" role="img" aria-label="運動量の測り方2つ。上は磁場の中で電子が円を描いて曲がる図で、勢いのある電子ほど曲がりにくく半径が大きい。下は結晶に当てて回折する角度を測る図で、角度から波長が分かり運動量が求まる">
+          <text class="strong" x="16" y="16">① 磁場で曲げて、曲がり具合を測る</text>
+          <rect class="fieldbox" x="55" y="28" width="250" height="90" rx="6"></rect>
+          <path class="fx" d="M106 48 l8 8 M114 48 l-8 8"></path>
+          <path class="fx" d="M174 48 l8 8 M182 48 l-8 8"></path>
+          <path class="fx" d="M242 48 l8 8 M250 48 l-8 8"></path>
+          <path class="fx" d="M106 88 l8 8 M114 88 l-8 8"></path>
+          <path class="fx" d="M242 88 l8 8 M250 88 l-8 8"></path>
+          <path class="fx" d="M284 68 l8 8 M292 68 l-8 8"></path>
+          <text class="label" x="300" y="114" text-anchor="end">磁場の中</text>
+          <text class="label" x="16" y="106">電子</text>
+          <line class="arrow" x1="16" y1="113" x2="58" y2="113"></line>
+          <polygon class="arrowhead" points="62,113 53,109 53,117"></polygon>
+          <polyline class="traj1" points="60.0,113.0 65.0,113.0 70.0,112.8 75.0,112.6 80.0,112.2 85.0,111.8 89.9,111.2 94.9,110.6 99.8,109.8 104.8,109.0 109.7,108.0 114.6,107.0 119.4,105.8 124.3,104.6 129.1,103.3 133.9,101.8 138.6,100.3 143.4,98.7 148.1,97.0 152.7,95.2 157.4,93.3 161.9,91.3 166.5,89.2 171.0,87.0 175.4,84.7 179.9,82.4 184.2,80.0 188.5,77.4 192.8,74.8 197.0,72.1 201.2,69.3 205.3,66.5 209.3,63.5 213.3,60.5 217.2,57.4 221.1,54.2 224.8,51.0 228.6,47.6 232.2,44.2 235.8,40.7"></polyline>
+          <polyline class="traj2" points="60.0,113.0 61.8,113.0 63.6,112.9 65.4,112.8 67.2,112.7 69.0,112.6 70.8,112.4 72.6,112.1 74.3,111.9 76.1,111.5 77.9,111.2 79.6,110.8 81.4,110.4 83.1,110.0 84.9,109.5 86.6,109.0 88.3,108.4 90.0,107.8 91.7,107.2 93.4,106.6 95.0,105.9 96.7,105.2 98.3,104.4 100.0,103.6 101.6,102.8 103.1,102.0 104.7,101.1 106.3,100.2 107.8,99.3 109.3,98.3 110.8,97.3 112.3,96.2 113.7,95.2 115.2,94.1 116.6,93.0 118.0,91.8 119.3,90.7 120.7,89.5 122.0,88.2 123.3,87.0 124.6,85.7 125.8,84.4 127.0,83.1 128.2,81.7 129.4,80.3 130.5,78.9 131.6,77.5 132.7,76.1 133.7,74.6 134.7,73.1 135.7,71.6 136.7,70.1 137.6,68.6 138.5,67.0 139.4,65.4 140.2,63.8 141.0,62.2 141.8,60.6 142.5,58.9 143.2,57.3 143.9,55.6 144.5,53.9 145.1,52.2 145.7,50.5 146.2,48.8 146.7,47.1 147.2,45.3 147.6,43.6 148.0,41.8 148.4,40.1"></polyline>
+          <line class="traj1" x1="16" y1="136" x2="34" y2="136"></line>
+          <text class="lbA" x="40" y="140">勢いが大きい → 曲がりにくい（r 大）</text>
+          <line class="traj2" x1="16" y1="156" x2="34" y2="156"></line>
+          <text class="lbB" x="40" y="160">勢いが小さい → よく曲がる（r 小）</text>
+          <text class="strong" x="16" y="182">r ＝ p/(qB)　半径を測れば p が出る</text>
+          <text class="strong" x="16" y="212">② 結晶に当てて、回折の角度を測る</text>
+          <text class="label" x="16" y="241">電子</text>
+          <line class="arrow" x1="16" y1="248" x2="96" y2="248"></line>
+          <polygon class="arrowhead" points="100,248 91,244 91,252"></polygon>
+          <circle class="atom" cx="106" cy="236" r="2.6"></circle>
+          <circle class="atom" cx="106" cy="248" r="2.6"></circle>
+          <circle class="atom" cx="106" cy="260" r="2.6"></circle>
+          <circle class="atom" cx="118" cy="236" r="2.6"></circle>
+          <circle class="atom" cx="118" cy="248" r="2.6"></circle>
+          <circle class="atom" cx="118" cy="260" r="2.6"></circle>
+          <circle class="atom" cx="130" cy="236" r="2.6"></circle>
+          <circle class="atom" cx="130" cy="248" r="2.6"></circle>
+          <circle class="atom" cx="130" cy="260" r="2.6"></circle>
+          <text class="label" x="118" y="284" text-anchor="middle">結晶</text>
+          <line class="thru" x1="140" y1="248" x2="282" y2="248"></line>
+          <line class="beam" x1="140" y1="248" x2="266" y2="205"></line>
+          <polygon class="arrowhead" points="276,202 264,201 268,211"></polygon>
+          <path class="thru" d="M196 248 A 56 56 0 0 0 193 230"></path>
+          <text class="strong" x="203" y="241">θ</text>
+          <rect class="det" x="288" y="186" width="7" height="92"></rect>
+          <circle class="spot" cx="291" cy="202" r="4.5"></circle>
+          <text class="label" x="291" y="292" text-anchor="middle">検出器</text>
+          <text class="strong" x="16" y="316">角度 θ から波長 λ が分かる　→　p ＝ h/λ</text>
+        </svg>
+        <div class="diagram-caption">運動量の測り方。<strong>①</strong> 磁場の中では電荷を持つ粒子が円を描いて曲がり、その半径は <strong>r＝p/(qB)</strong>。勢いのある電子ほど曲がりにくいので、<strong>半径がそのまま運動量の目盛り</strong>になる。<strong>②</strong> 結晶に当てると、規則正しく並んだ原子で回折して特定の角度に強く出る。その角度から<strong>波長 λ</strong> が分かり、<strong>p＝h/λ</strong> で運動量になる――ド・ブロイの式が、そのまま測定装置として働いている</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
