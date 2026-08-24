@@ -54,6 +54,10 @@
   .kq-svg .axis{stroke:var(--muted);stroke-width:1.2}
   .kq-svg .curveA{fill:none;stroke:#2f6fa6;stroke-width:2}
   .kq-svg .curveB{fill:none;stroke:var(--gold-dark);stroke-width:2.2}
+  .kq-svg .ray{stroke:var(--muted);stroke-width:1.6}
+  .kq-svg .wf{stroke:#2f6fa6;stroke-width:1.4;stroke-dasharray:5 4}
+  .kq-svg .hl{stroke:var(--gold-dark);stroke-width:3}
+  .kq-svg .ra{fill:none;stroke:var(--muted);stroke-width:1}
 </style>
 </head>
 <body>
@@ -317,6 +321,77 @@
           </div>
           <div class="dialog-bubble">そこがこの話のいちばん面白いところだよ。②の結晶のほうで考えるとはっきりする。……まず、<strong>なぜ特定の角度だけ強く出るのか</strong>、そこから始めよう。結晶の中では原子がきれいな面をつくって、等間隔 <strong>d</strong> で何層も重なっている。電子の波は1枚目の面でも2枚目の面でも跳ね返るから、2枚目で跳ね返った波のほうが<strong>余分な道のりを進む</strong>ことになるね。その余分な道のりは <strong>2d sinθ</strong> だ。θ は面すれすれから測った角度で、sinθ は直角三角形で角度 θ に向かい合う辺を斜辺で割った割合のこと。いまは「角度が決まればひとつに決まる数」と思ってくれればいい。</div>
         </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">その 2d sinθ という形は、どこから出てくるんですか？ d と θ から、どうしてちょうど「d sinθ の2倍」になるのか、図で確かめたいです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">では作図しよう。その前に、道のりの差を測るための物差しをひとつ用意する。<strong>波面</strong>だ。平行な光線では、進む方向に直角な線を引くと、その線の上の点はどれも<strong>同じ距離だけ進んだ地点</strong>になる。だから道のりの差は、<strong>入口側の波面と出口側の波面で挟んで、その間だけを比べれば</strong>いい。波面より手前と先は、どちらの経路でも同じ長さだからね。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" viewBox="0 0 340 244" width="100%" role="img" aria-label="平行な2本の光線が間隔dの2枚の面で反射する図。1枚目の反射点Aを通る入口側と出口側の波面で挟むと、余分な道のりは深く潜る区間CBと登る区間BC′だけで、直角三角形からそれぞれd sinθ、合計2d sinθになる">
+          <text class="strong" x="14" y="16">平行光線での、道のりの差</text>
+          <line class="base" x1="55" y1="120" x2="322" y2="120"></line>
+          <line class="base" x1="55" y1="190" x2="322" y2="190"></line>
+          <text class="label" x="320" y="114" text-anchor="end">1枚目の面</text>
+          <text class="label" x="320" y="204" text-anchor="end">2枚目の面</text>
+          <line class="arrow" x1="62" y1="122" x2="62" y2="188"></line>
+          <polygon class="arrowhead" points="62,120 58,127 66,127"></polygon>
+          <polygon class="arrowhead" points="62,190 58,183 66,183"></polygon>
+          <text class="strong" x="70" y="158">d</text>
+          <line class="ray" x1="79.9" y1="56.9" x2="170" y2="120"></line>
+          <line class="ray" x1="170" y1="120" x2="260.1" y2="56.9"></line>
+          <line class="ray" x1="47.1" y1="104.0" x2="137.1" y2="167.0"></line>
+          <line class="ray" x1="202.9" y1="167.0" x2="292.9" y2="104.0"></line>
+          <polygon class="arrowhead" points="117.6,83.3 110.8,82.5 114.5,77.2"></polygon>
+          <polygon class="arrowhead" points="97.1,139.0 90.3,138.1 94.0,132.9"></polygon>
+          <polygon class="arrowhead" points="247.0,66.1 243.9,72.1 240.2,66.9"></polygon>
+          <polygon class="arrowhead" points="271.6,118.9 268.5,124.9 264.8,119.7"></polygon>
+          <line class="hl" x1="137.1" y1="167.0" x2="170" y2="190"></line>
+          <line class="hl" x1="170" y1="190" x2="202.9" y2="167.0"></line>
+          <line class="wf" x1="180.3" y1="105.3" x2="126.8" y2="181.7"></line>
+          <line class="wf" x1="159.7" y1="105.3" x2="213.2" y2="181.7"></line>
+          <path class="ra" d="M142.8 171.0 L146.9 165.3 L141.1 161.2"></path>
+          <path class="ra" d="M170.0 150.0 A30 30 0 0 1 152.8 144.6"></path>
+          <path class="ra" d="M144.0 120.0 A26 26 0 0 1 148.7 105.1"></path>
+          <text class="lbB" x="149" y="146">θ</text>
+          <text class="lbB" x="132" y="111">θ</text>
+          <circle cx="170" cy="120" r="3" fill="var(--ink)"></circle>
+          <circle cx="170" cy="190" r="3" fill="var(--ink)"></circle>
+          <text class="strong" x="177" y="112">A</text>
+          <text class="strong" x="177" y="205">B</text>
+          <text class="strong" x="121" y="169">C</text>
+          <text class="strong" x="209" y="169">C′</text>
+          <text class="lbB" x="186" y="96">波面</text>
+          <text class="strong" x="14" y="232">余分な道のり ＝ CB ＋ BC′ ＝ 2d sinθ</text>
+        </svg>
+        <div class="diagram-caption">光線1（A で反射）と光線2（B で反射）の道のりを、A を通る<strong>入口側の波面</strong>と<strong>出口側の波面</strong>（青の破線）で挟んで比べる。A と C は同じ波面上なので、ここまでは同点。差がつくのは光線2だけが通る <strong>C→B と B→C′</strong>（金の区間）。三角形 ACB は C が直角で A の角が θ だから <strong>CB ＝ d sinθ</strong>、出口側も鏡写しで同じ。合計 <strong>2d sinθ</strong></div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">1枚目の反射点を A、その真下にある2枚目の反射点を B とする（AB ＝ d）。入口側の波面を A を通るように引いて、光線2との交点を C としよう。A と C は同じ波面の上だから、ここまでは<strong>完全に同点</strong>。差がつくのは、光線2だけが進む <strong>C→B</strong> と、反射したあとに登る <strong>B→C′</strong> の2区間だけだ。……そこで三角形 ACB を見る。波面は光線と直角だから <strong>C が直角</strong>。そして光線が「水平から θ」傾いているぶん、波面 AC は「垂直から θ」傾く。AB は垂直な線だから、<strong>A の角がちょうど θ</strong> になる。斜辺 d の、θ の向かい側の辺だから <strong>CB ＝ d sinθ</strong>。出口側は入口側の鏡写しで、まったく同じ三角形から <strong>BC′ ＝ d sinθ</strong>。合わせて <strong>2d sinθ</strong> だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">検算してみます。θ ＝ 90°――真上から入って真上へ返るときは sinθ ＝ 1 で、差は 2d。深さ d をまるまる往復するから当然です。逆に面すれすれ（θ がほぼ 0）なら、差はほぼ 0――横に滑っていくだけだから、1枚深く潜ってもタダ同然。……sinθ は<strong>「d のうち、進行方向に効いてくる割合」</strong>なんですね。</div>
+        </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
@@ -329,7 +404,7 @@
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">その 2d sinθ、少し引っかかります。道のりの差って、<strong>検出器の壁までの距離にもよりません</strong>か？ 面から壁までの距離と、壁のどこで観測されたかを決めて、三平方の定理で2つの経路を厳密に測ったら――差の式に、壁までの距離が残ってしまう気がします。角度だけでは決まらないはずです。</div>
+          <div class="dialog-bubble">ひとつ気になります。いまの図は、2本の光線を<strong>平行</strong>だとして描きましたよね。でも実際の波は<strong>検出器の1点</strong>に集まっていくのだから、厳密には平行ではないはずです。面から壁までの距離と、壁のどこで観測されたかを決めて、三平方の定理で2つの経路を厳密に測ったら――差の式に、<strong>壁までの距離が残ってしまう</strong>気がします。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
