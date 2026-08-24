@@ -47,6 +47,13 @@
   .kq-svg .win{fill:rgba(197,154,58,.10);stroke:var(--gold-dark);stroke-width:1.6}
   .kq-svg .thin{stroke:var(--line);stroke-width:1;stroke-dasharray:4 3}
   .kq-svg .qmark{fill:var(--gold-dark);font-size:12px;font-weight:900}
+  .kq-svg .wsm{fill:none;stroke:var(--gold);stroke-width:1.6}
+  .kq-svg .wsum{fill:none;stroke:var(--gold-dark);stroke-width:2.4}
+  .kq-svg .stat{fill:var(--gold-dark);font-size:11px;font-weight:900}
+  .kq-svg .sep{stroke:var(--line);stroke-width:1;stroke-dasharray:5 4}
+  .kq-svg .axis{stroke:var(--muted);stroke-width:1.2}
+  .kq-svg .curveA{fill:none;stroke:#2f6fa6;stroke-width:2}
+  .kq-svg .curveB{fill:none;stroke:var(--gold-dark);stroke-width:2.2}
 </style>
 </head>
 <body>
@@ -303,12 +310,99 @@
       </div>
 
       <div class="dialogue-scene">
+                <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこがこの話のいちばん面白いところだよ。②の結晶のほうで考えるとはっきりする。……まず、<strong>なぜ特定の角度だけ強く出るのか</strong>、そこから始めよう。結晶の中では原子がきれいな面をつくって、等間隔 <strong>d</strong> で何層も重なっている。電子の波は1枚目の面でも2枚目の面でも跳ね返るから、2枚目で跳ね返った波のほうが<strong>余分な道のりを進む</strong>ことになるね。その余分な道のりは <strong>2d sinθ</strong> だ。θ は面すれすれから測った角度で、sinθ は直角三角形で角度 θ に向かい合う辺を斜辺で割った割合のこと。いまは「角度が決まればひとつに決まる数」と思ってくれればいい。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そして、その余分な道のりが<strong>ちょうど波長1個分</strong>になったとき、2つの波は山と山がぴったり重なって強め合う。<strong>2d sinθ ＝ λ</strong> だね。「その角度で強く出る」というのは、それだけのことなんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">分かりました。……では、角度が<strong>少しだけ</strong>ずれたらどうなりますか。余分な道のりがぴったり λ ではなく、λ より少し長くなったとき。少し弱くなるだけで、まだ明るいままな気がします。</div>
+        </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そこがこの話のいちばん面白いところだよ。②の結晶のほうで考えるとはっきりする。……回折で角度が鋭く決まるのは、電子の波が<strong>たくさんの原子の面にまたがって</strong>当たっているからなんだ。またがる面の数が多いほど、強く出る角度は細く絞られる。逆に、波が原子ひとつぶんの幅しかなければ、またがる面は1枚きり。角度なんて決まりようがなくて、ぼんやり散らばるだけになる。……つまり、<strong>位置を絞るという操作そのものが、角度の読み取りを潰してしまう</strong>。しかも潰れ方がぴったりでね。絞った幅を Δx とすると、運動量の読みのボケはおおよそ h/Δx になるんだ。</div>
+          <div class="dialog-bubble">そこだよ。<strong>面が2枚だけならね、きみの言うとおり</strong>、ほとんど変わらない。……ところが面は2枚ではないんだ。余分な道のりのずれを δ とすると――1枚目と2枚目のずれは δ。1枚目と3枚目は <strong>2δ</strong>。4枚目は <strong>3δ</strong>。……<strong>ずれが積み重なっていく</strong>。そして積み上がったずれが全体で波長1個分になったとき、N枚の波は山から谷まで均等にばらけて、<strong>きれいに全部打ち消し合って消えてしまう</strong>。その条件は Nδ ＝ λ、つまり <strong>δ ＝ λ/N</strong> だ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="kq-svg" id="bragg-svg" viewBox="0 0 340 324" width="100%" role="img" aria-label="上段は6枚の面から返る波を縦に並べたアニメーション。1枚あたりのずれが波長の6分の1になると6本はばらけて合計がゼロになる。下段は角度に対する明るさのグラフで、面が2枚のときの広い山と12枚のときの細い山を比べている">
+          <text class="strong" x="14" y="16">① ずれは、面ごとに積み重なる</text>
+          <line class="thin" x1="85" y1="26" x2="85" y2="132"></line>
+          <text class="label" x="68" y="40" text-anchor="end">1枚目</text>
+          <path class="wsm" id="bg-w0"></path>
+          <text class="label" x="68" y="57" text-anchor="end">2枚目</text>
+          <path class="wsm" id="bg-w1"></path>
+          <text class="label" x="68" y="74" text-anchor="end">3枚目</text>
+          <path class="wsm" id="bg-w2"></path>
+          <text class="label" x="68" y="91" text-anchor="end">4枚目</text>
+          <path class="wsm" id="bg-w3"></path>
+          <text class="label" x="68" y="108" text-anchor="end">5枚目</text>
+          <path class="wsm" id="bg-w4"></path>
+          <text class="label" x="68" y="125" text-anchor="end">6枚目</text>
+          <path class="wsm" id="bg-w5"></path>
+          <line class="sep" x1="30" y1="140" x2="320" y2="140"></line>
+          <text class="label" x="68" y="164" text-anchor="end">合計</text>
+          <path class="wsum" id="bg-sum"></path>
+          <text class="stat" id="bg-stat" x="74" y="186">ずれ 0 ―― 6本が揃って、強め合う</text>
+          <text class="strong" x="14" y="206">② だから、面が多いほど角度が細く絞られる</text>
+          <line class="axis" x1="30" y1="228" x2="30" y2="304"></line>
+          <line class="axis" x1="30" y1="304" x2="320" y2="304"></line>
+          <text class="label" x="36" y="226">明るさ</text>
+          <text class="label" x="320" y="318" text-anchor="end">角度</text>
+          <line class="axis" x1="175" y1="304" x2="175" y2="309"></line>
+          <text class="label" x="175" y="318" text-anchor="middle">ぴったりの角度</text>
+          <path class="curveA" d="M30 304.00L31 303.99L32 303.96L33 303.92L34 303.86L35 303.78L36 303.68L37 303.56L38 303.43L39 303.28L40 303.11L41 302.93L42 302.72L43 302.50L44 302.27L45 302.01L46 301.74L47 301.45L48 301.15L49 300.83L50 300.49L51 300.13L52 299.76L53 299.38L54 298.98L55 298.56L56 298.13L57 297.68L58 297.22L59 296.74L60 296.25L61 295.75L62 295.23L63 294.69L64 294.15L65 293.59L66 293.02L67 292.43L68 291.83L69 291.22L70 290.60L71 289.97L72 289.32L73 288.67L74 288.00L75 287.33L76 286.64L77 285.94L78 285.24L79 284.52L80 283.80L81 283.07L82 282.33L83 281.58L84 280.83L85 280.07L86 279.30L87 278.52L88 277.74L89 276.96L90 276.17L91 275.37L92 274.57L93 273.77L94 272.96L95 272.15L96 271.33L97 270.52L98 269.70L99 268.88L100 268.06L101 267.23L102 266.41L103 265.59L104 264.77L105 263.94L106 263.12L107 262.30L108 261.48L109 260.67L110 259.85L111 259.04L112 258.23L113 257.43L114 256.63L115 255.83L116 255.04L117 254.26L118 253.48L119 252.70L120 251.93L121 251.17L122 250.42L123 249.67L124 248.93L125 248.20L126 247.48L127 246.76L128 246.06L129 245.36L130 244.67L131 244.00L132 243.33L133 242.68L134 242.03L135 241.40L136 240.78L137 240.17L138 239.57L139 238.98L140 238.41L141 237.85L142 237.31L143 236.77L144 236.25L145 235.75L146 235.26L147 234.78L148 234.32L149 233.87L150 233.44L151 233.02L152 232.62L153 232.24L154 231.87L155 231.51L156 231.17L157 230.85L158 230.55L159 230.26L160 229.99L161 229.73L162 229.50L163 229.28L164 229.07L165 228.89L166 228.72L167 228.57L168 228.44L169 228.32L170 228.22L171 228.14L172 228.08L173 228.04L174 228.01L175 228.00L176 228.01L177 228.04L178 228.08L179 228.14L180 228.22L181 228.32L182 228.44L183 228.57L184 228.72L185 228.89L186 229.07L187 229.28L188 229.50L189 229.73L190 229.99L191 230.26L192 230.55L193 230.85L194 231.17L195 231.51L196 231.87L197 232.24L198 232.62L199 233.02L200 233.44L201 233.87L202 234.32L203 234.78L204 235.26L205 235.75L206 236.25L207 236.77L208 237.31L209 237.85L210 238.41L211 238.98L212 239.57L213 240.17L214 240.78L215 241.40L216 242.03L217 242.68L218 243.33L219 244.00L220 244.67L221 245.36L222 246.06L223 246.76L224 247.48L225 248.20L226 248.93L227 249.67L228 250.42L229 251.17L230 251.93L231 252.70L232 253.48L233 254.26L234 255.04L235 255.83L236 256.63L237 257.43L238 258.23L239 259.04L240 259.85L241 260.67L242 261.48L243 262.30L244 263.12L245 263.94L246 264.77L247 265.59L248 266.41L249 267.23L250 268.06L251 268.88L252 269.70L253 270.52L254 271.33L255 272.15L256 272.96L257 273.77L258 274.57L259 275.37L260 276.17L261 276.96L262 277.74L263 278.52L264 279.30L265 280.07L266 280.83L267 281.58L268 282.33L269 283.07L270 283.80L271 284.52L272 285.24L273 285.94L274 286.64L275 287.33L276 288.00L277 288.67L278 289.32L279 289.97L280 290.60L281 291.22L282 291.83L283 292.43L284 293.02L285 293.59L286 294.15L287 294.69L288 295.23L289 295.75L290 296.25L291 296.74L292 297.22L293 297.68L294 298.13L295 298.56L296 298.98L297 299.38L298 299.76L299 300.13L300 300.49L301 300.83L302 301.15L303 301.45L304 301.74L305 302.01L306 302.27L307 302.50L308 302.72L309 302.93L310 303.11L311 303.28L312 303.43L313 303.56L314 303.68L315 303.78L316 303.86L317 303.92L318 303.96L319 303.99L320 304.00"></path>
+          <path class="curveB" d="M30 304.00L31 303.99L32 303.97L33 303.92L34 303.87L35 303.81L36 303.74L37 303.67L38 303.60L39 303.55L40 303.50L41 303.48L42 303.46L43 303.47L44 303.49L45 303.53L46 303.59L47 303.65L48 303.72L49 303.79L50 303.85L51 303.91L52 303.96L53 303.99L54 304.00L55 303.99L56 303.97L57 303.93L58 303.87L59 303.80L60 303.72L61 303.64L62 303.57L63 303.50L64 303.44L65 303.40L66 303.38L67 303.38L68 303.40L69 303.44L70 303.50L71 303.57L72 303.65L73 303.73L74 303.81L75 303.88L76 303.94L77 303.98L78 304.00L79 303.99L80 303.97L81 303.92L82 303.84L83 303.76L84 303.66L85 303.55L86 303.45L87 303.35L88 303.27L89 303.21L90 303.17L91 303.16L92 303.17L93 303.22L94 303.29L95 303.38L96 303.48L97 303.59L98 303.71L99 303.81L100 303.90L101 303.96L102 304.00L103 304.00L104 303.96L105 303.89L106 303.78L107 303.64L108 303.49L109 303.31L110 303.14L111 302.97L112 302.82L113 302.69L114 302.61L115 302.56L116 302.57L117 302.62L118 302.72L119 302.86L120 303.03L121 303.22L122 303.42L123 303.61L124 303.78L125 303.91L126 303.98L127 304.00L128 303.93L129 303.79L130 303.58L131 303.29L132 302.93L133 302.53L134 302.10L135 301.66L136 301.25L137 300.87L138 300.57L139 300.35L140 300.25L141 300.27L142 300.41L143 300.69L144 301.07L145 301.55L146 302.09L147 302.65L148 303.18L149 303.62L150 303.91L151 304.00L152 303.80L153 303.27L154 302.34L155 300.96L156 299.11L157 296.74L158 293.86L159 290.47L160 286.60L161 282.28L162 277.59L163 272.60L164 267.39L165 262.08L166 256.78L167 251.61L168 246.68L169 242.13L170 238.05L171 234.56L172 231.75L173 229.69L174 228.42L175 228.00L176 228.42L177 229.69L178 231.75L179 234.56L180 238.05L181 242.13L182 246.68L183 251.61L184 256.78L185 262.08L186 267.39L187 272.60L188 277.59L189 282.28L190 286.60L191 290.47L192 293.86L193 296.74L194 299.11L195 300.96L196 302.34L197 303.27L198 303.80L199 304.00L200 303.91L201 303.62L202 303.18L203 302.65L204 302.09L205 301.55L206 301.07L207 300.69L208 300.41L209 300.27L210 300.25L211 300.35L212 300.57L213 300.87L214 301.25L215 301.66L216 302.10L217 302.53L218 302.93L219 303.29L220 303.58L221 303.79L222 303.93L223 304.00L224 303.98L225 303.91L226 303.78L227 303.61L228 303.42L229 303.22L230 303.03L231 302.86L232 302.72L233 302.62L234 302.57L235 302.56L236 302.61L237 302.69L238 302.82L239 302.97L240 303.14L241 303.31L242 303.49L243 303.64L244 303.78L245 303.89L246 303.96L247 304.00L248 304.00L249 303.96L250 303.90L251 303.81L252 303.71L253 303.59L254 303.48L255 303.38L256 303.29L257 303.22L258 303.17L259 303.16L260 303.17L261 303.21L262 303.27L263 303.35L264 303.45L265 303.55L266 303.66L267 303.76L268 303.84L269 303.92L270 303.97L271 303.99L272 304.00L273 303.98L274 303.94L275 303.88L276 303.81L277 303.73L278 303.65L279 303.57L280 303.50L281 303.44L282 303.40L283 303.38L284 303.38L285 303.40L286 303.44L287 303.50L288 303.57L289 303.64L290 303.72L291 303.80L292 303.87L293 303.93L294 303.97L295 303.99L296 304.00L297 303.99L298 303.96L299 303.91L300 303.85L301 303.79L302 303.72L303 303.65L304 303.59L305 303.53L306 303.49L307 303.47L308 303.46L309 303.48L310 303.50L311 303.55L312 303.60L313 303.67L314 303.74L315 303.81L316 303.87L317 303.92L318 303.97L319 303.99L320 304.00"></path>
+          <text class="lbB" x="320" y="242" text-anchor="end">面 2 枚</text>
+          <text class="lbA" x="320" y="258" text-anchor="end">面 12 枚</text>
+        </svg>
+        <div class="diagram-caption"><strong>①</strong> 6枚の面から返ってきた波を縦に並べたもの。角度がぴったりなら6本は揃って強め合うが、1枚あたり <strong>λ/6</strong> だけずれると、6本は山から谷まで均等にばらけて、<strong>合計はぴったり 0</strong> になる。<strong>②</strong> 角度に対する明るさ。面が2枚なら山はゆるく広いが、12枚になると同じ物差しの上で山が一気に細くなる。<strong>面が多いほど「ぴったりの角度」の許容範囲が狭い</strong>＝角度が精密に決まる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">え、たった λ/N ですか。……面が1000枚あったら、1枚あたり波長の1000分の1 ずれただけで、明るさが消えてしまうということですよね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。……たとえで言おうか。N人が一列に並んで拍手をする。全員がぴったり揃えば、一発の大きな「パン！」になるね。ここで、各人が<strong>すぐ前の人より1000分の1秒だけ遅れる</strong>としよう。2人だけなら、ずれは合わせて1000分の1秒。ほとんど揃って聞こえる。ところが1000人いると、最後の人は最初の人より<strong>まるまる1秒</strong>遅れて、パンではなくザーッという広がった音になる。……同じ「1人あたりのわずかなずれ」が、人数が多いと致命傷になるんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">裏返すと――<strong>長い列は、タイミングのずれをものすごく鋭く検出する装置</strong>になっているわけですね。面が多いということは、角度をそれだけ厳しく問うということ。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">よくまとめたね。では、きみの作戦に戻ろう。<strong>波が何枚の面にまたがるかは、波の広がり Δx で決まる</strong>。面の間隔が d なら N ≈ Δx/d だ。許される角度のずれは λ/N ＝ <strong>λd/Δx</strong>――つまり <strong>Δx を小さくすればするほど、許されるずれは大きくなる</strong>。角度がぼやけるんだよ。極端に、波が面1枚ぶんの幅しかなければ N ＝ 1。<strong>見比べる相手の面がいない</strong>から、打ち消し合いようがない。どの角度でも同じくらい出てしまって、角度は何も教えてくれなくなる。……これを p＝h/λ に入れると、運動量の読みのボケはおおよそ <strong>h/Δx</strong> になる。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -465,6 +559,66 @@
       else if (!vis && running) { running = false; if (raf) cancelAnimationFrame(raf); }
     }, {threshold: 0.15}).observe(svg);
   } else { running = true; loop(); }
+})();
+</script>
+
+<script>
+(function(){
+  var svg = document.getElementById('bragg-svg');
+  if (!svg) return;
+  var LAM = 44, X0 = 74, X1 = 310, N = 6, DMAX = LAM / N;
+  var ws = [], i;
+  for (i = 0; i < N; i++) ws.push(document.getElementById('bg-w' + i));
+  var sum = document.getElementById('bg-sum'), stat = document.getElementById('bg-stat');
+
+  function one(axis, amp, shift) {
+    var d = '', first = true;
+    for (var x = X0; x <= X1 + 0.001; x += 2) {
+      var y = axis - amp * Math.sin(2 * Math.PI * (x - shift) / LAM);
+      d += (first ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(2);
+      first = false;
+    }
+    return d;
+  }
+  function total(axis, amp, dlt) {
+    var d = '', first = true;
+    for (var x = X0; x <= X1 + 0.001; x += 2) {
+      var v = 0;
+      for (var j = 0; j < N; j++) v += Math.sin(2 * Math.PI * (x - j * dlt) / LAM);
+      d += (first ? 'M' : 'L') + x.toFixed(1) + ' ' + (axis - amp * v).toFixed(2);
+      first = false;
+    }
+    return d;
+  }
+  function draw(dlt) {
+    for (var i = 0; i < N; i++) ws[i].setAttribute('d', one(36 + i * 17, 6, i * dlt));
+    sum.setAttribute('d', total(160, 16 / N, dlt));
+    var r = dlt / DMAX;
+    stat.textContent = r < 0.08 ? 'ずれ 0 ―― 6本が揃って、強め合う'
+      : (r > 0.92 ? 'ずれ λ/6 ―― ばらけて、合計は 0' : 'ずれが積み上がっていく……');
+  }
+  draw(0);
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { draw(DMAX); return; }
+
+  var running = false, raf = null, t0 = 0;
+  function loop(now) {
+    if (!running) return;
+    if (!t0) t0 = now;
+    var p = ((now - t0) / 6000) % 1, d;
+    if (p < 0.15) d = 0;
+    else if (p < 0.55) d = DMAX * (p - 0.15) / 0.4;
+    else if (p < 0.78) d = DMAX;
+    else d = DMAX * (1 - (p - 0.78) / 0.22);
+    draw(d);
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; t0 = 0; raf = requestAnimationFrame(loop); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; raf = requestAnimationFrame(loop); }
 })();
 </script>
 </body>
