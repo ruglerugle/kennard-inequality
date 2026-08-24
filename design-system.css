@@ -204,6 +204,8 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 .formula-box{background:#fff8e6;border:1px solid #e3c877;border-radius:10px;padding:14px 16px;margin:12px 0;font-size:14px;line-height:1.85;color:#3a2c08;font-weight:700;overflow-x:auto}
 /* 各ステップは折り返しても頭が分かるよう、ぶら下げインデント＋行間で区切る */
 .formula-box .step{display:block;margin-bottom:11px;padding-left:1.3em;text-indent:-1.3em;word-break:keep-all;overflow-wrap:break-word}
+.formula-box .step.multi{padding-left:0;text-indent:0}
+.formula-box .step.multi .item{display:inline-block;max-width:100%;padding-left:1.3em;text-indent:-1.3em;word-break:keep-all;overflow-wrap:break-word}
 .formula-box .step:last-child{margin-bottom:0}
 /* 折り返しても項目の切れ目が分かるよう、2つめ以降に区切り線を引く */
 .formula-box .step + .step{border-top:1px dashed #e6cf94;padding-top:11px}
