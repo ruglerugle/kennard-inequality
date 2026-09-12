@@ -61,7 +61,7 @@
 
 # ファイル構成
 - `design-system.css` — quest-template由来の共通デザイン。配色は `:root` の変数で管理（夜の藍×ゴールド）
-- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `kennardQuestProgress`、グローバルは `KQ`
+- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `kennardQuestProgress_v2`、グローバルは `KQ`
 - `stage1.html` 〜 `stage7.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
 - `images/` — キャラ画像はWebP（幅300px程度）。`<img>` には `width`/`height` 属性を必ず付ける。
   `labo.webp`（stage2の座標軸図の背景）の元になった高解像度PNGは `.gitignore` で除外してあり、
