@@ -28,7 +28,6 @@
 <style>
   .kq-svg .wave{fill:none;stroke:var(--gold);stroke-width:2}
   .kq-svg .base{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3}
-  .kq-svg .tang{stroke:#b5504a;stroke-width:2}
   .kq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .kq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
   .kq-svg .axis{stroke:var(--muted);stroke-width:1.5}
@@ -38,8 +37,6 @@
   .kq-svg .lineB{stroke:var(--gold);stroke-width:2.5;fill:none;stroke-linecap:round}
   .kq-svg .lbA{fill:#b5504a;font-size:12px;font-weight:900}
   .kq-svg .lbB{fill:var(--gold-dark);font-size:12px;font-weight:900}
-  .kq-svg .mixbar{fill:#2f6fa6}
-  .kq-svg .marr{stroke:var(--muted);stroke-width:1.5}
   .kq-svg .mhead{fill:var(--muted)}
   .kq-svg .mline{stroke:var(--line);stroke-width:1}
   .kq-svg .ktick{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
@@ -112,53 +109,21 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その式を最初に信じた男の話から始めよう。1924年、フランスの大学院生ド・ブロイは、博士論文でとんでもない賭けをした。「光は波だと思われていたのに、実は粒の性質も持っていた。それなら<strong>逆に、粒だと思われている電子は、波の性質を持つのではないか</strong>」。実験の証拠はまだ何もない。あったのは<strong>自然は対称なはずだ</strong>という直感だけ。審査員は困り果ててアインシュタインに意見を求め、彼は「一見突飛だが、まったく健全だ」と絶賛した。3年後、電子の波は本当に実験で見つかって、ド・ブロイはノーベル賞を受けた。公式の発見は、こんなふうに「類推」から生まれることがあるんだ。</div>
+          <div class="dialog-bubble">その手がかりで合っているよ。p＝h/λ――波長と運動量をつなぐこの辞書は、<a href="https://ruglerugle.github.io/schrodinger-equation/" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline">シュレディンガー方程式の教室</a>で組み立てたものだったね。この旅でも土台になる式だから、先へ進む前に、どう組み立てたのだったかを整理し直しておこう。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">証拠より先に対称性を信じたんですね。……でも、ひとつ引っかかります。<strong>式の形そのもの</strong>は、どこから出てきたんですか？ 「電子も波だ」と思いついただけでは、波長と運動量をつなぐ式が <strong>λ＝h/p</strong>（※ p＝h/λ を波長について解いただけで、同じ式です）というこの形だとは決まらないはずです。h を掛けるのか割るのか、それすら決めようがない気がします。</div>
+          <div class="dialog-bubble">はい。出発点は光子でした。光電効果で確立した <strong>E＝hν</strong> と、相対性理論が質量ゼロの粒子に与える <strong>E＝pc</strong>。同じ光子のエネルギーを2通りに書いたのだから等号でつないでよくて、hν＝pc。波の基本式 c＝νλ を代入すると ν が約分されて、<strong>p＝h/λ</strong>。光子については、仮定を足さずに導出できる式でした。</div>
         </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">核心を突いたね。答えを言うと、<strong>式の形は光から借りてきた</strong>ものなんだ。光についてなら、この関係は計算できっちり出せるからだよ。材料は2つ。ひとつは光電効果のときに出会った <strong>E＝hν</strong>。光子1個のエネルギーは、振動数に h を掛けたものだった。もうひとつは相対性理論が教えてくれる関係で、<strong>質量ゼロの粒子では E＝pc</strong> ――エネルギーは、運動量に光速を掛けたものに等しい。光子は質量ゼロだから、これが使える。さあ、この2つを光子について並べてごらん。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">同じ光子のエネルギー E を2通りに書いたのだから、等号でつないでいいですね。hν＝pc。p について解くと p＝hν/c。……あとは分母の c を波長に直せば終わりです。波の速さは「振動数×波長」だから c＝νλ。代入すると p＝hν/(νλ) で、<strong>ν が約分できて</strong>――<strong>p＝h/λ</strong>。出ました！ しかも途中でひとつも仮定を足していません。これは推測ではなく、<strong>光子については本当に導出できる</strong>式なんですね。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">その通り。そしてこの式は、1923年の<strong>コンプトン効果</strong>――X線を電子にぶつけると、はね返った X線の波長が伸びる現象――で、実験的にも確かめられている。光子が本当に p＝h/λ の運動量を持って電子を突き飛ばしていた証拠だよ。さて、ここまで来ると、ド・ブロイの賭けの正体がはっきりする。彼がやったのは、<strong>この式を、質量のある粒子にも要求する</strong>ことだった。電子には質量があるから E＝pc は使えない。導出の足場のほうは崩れているんだ。それでも「λ＝h/p」（※ さっきの p＝h/λ と同じ式だよ。物質波の話では、波長を主役にしたこの向きで書くのが習わしなんだ）という関係だけは光と物質に共通のはずだ、と踏み込んだ。</div>
-        </div>
-      </div>
-
-      <div class="formula-box">
-        <span class="step">【光子については導出できる】</span>
-        <span class="step multi"><span class="item">①&nbsp;E ＝ hν　（光量子仮説。光電効果で確立）</span>　<span class="item">②&nbsp;E ＝ pc　（相対性理論。質量ゼロの粒子）</span></span>
-        <span class="step">①＝②&nbsp;より hν ＝ pc　→　p ＝ hν/c</span>
-        <span class="step">波の基本式 c ＝ νλ を代入　→　p ＝ hν/(νλ) ＝ <strong>h/λ</strong>　（ν が約分される）</span>
-        <span class="step">【ド・ブロイの賭け】 <br class="wbr">この式を、E＝pc が使えない<strong>質量のある粒子にも要求する</strong>（1924年）→ 1927年に電子の回折で実証</span>
-      </div>
-
-      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">導出したのではなく、<strong>導出の結果だけを持ち出した</strong>んですね。足場を外して結論だけ運んでいくなんて、ずいぶん乱暴に聞こえますけど……それが当たってしまったのだからすごい話です。ともかく、これで p＝h/λ は安心して使えますね。</div>
+          <div class="dialog-bubble">そして1924年、ド・ブロイがこの式を<strong>質量のある電子にも要求した</strong>んでしたよね。質量があると導出の足場 E＝pc は使えないのに、結論の関係だけは光と物質に共通のはずだ、という賭け。3年後、電子の回折の実験で本当に波が見つかって、賭けは当たった。……ですから、安心して使えます。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -247,31 +212,8 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そのとおり。ここで、いま私たちが追いかけている式の正体が少し見えてくるね。<strong>Δx は「ψ がどれだけ広がっているか」、Δp は「波長をどれだけ混ぜたか」</strong>。この2つは無関係ではいられない。ψ を狭い範囲に閉じ込めようとすれば、たくさんの波長を混ぜないと形が作れないからね。Δx·Δp ≥ ℏ/2 という式は、その<strong>「広がり」と「混ぜ具合」のせめぎ合い</strong>を書いたものなんだよ。</div>
+          <div class="dialog-bubble">そのとおり。ここで、いま私たちが追いかけている式の正体が少し見えてくるね。<strong>Δx は「ψ がどれだけ広がっているか」、Δp は「波長をどれだけ混ぜたか」</strong>。この2つは無関係ではいられない。ψ を狭い範囲に閉じ込めようとすれば、たくさんの波長を混ぜないと形が作れないからね。Δx·Δp ≥ ℏ/2 という式は、その<strong>「広がり」と「混ぜ具合」のせめぎ合い</strong>を書いたものなんだよ。片方を押し下げればもう片方が必ず持ち上がる、シーソーのような関係だ。</div>
         </div>
-      </div>
-
-      <div class="diagram-box">
-        <svg class="kq-svg" id="mix-svg" viewBox="0 0 340 212" width="100%" role="img" aria-label="上段は混ぜた波長の分布を表す棒グラフ、下段はそれらを足し合わせてできた波。混ぜる波長の幅を広げると、できあがる波のかたまりが狭くなり、幅を狭めるとかたまりが広がるという関係が、繰り返し動いて示される">
-          <text class="strong" x="170" y="14" text-anchor="middle">混ぜる幅を広げるほど、かたまりは狭くなる</text>
-          <text class="label" x="20" y="30">混ぜた濃さ</text>
-          <text class="label" x="318" y="58" text-anchor="end">運動量 p</text>
-          <line class="mline" x1="20" y1="62" x2="320" y2="62"></line>
-          <g id="mix-bars"></g>
-          <line class="marr" id="dp-line" x1="150" y1="78" x2="190" y2="78"></line>
-          <polygon class="mhead" id="dp-h1" points="150,78 157,75 157,81"></polygon>
-          <polygon class="mhead" id="dp-h2" points="190,78 183,75 183,81"></polygon>
-          <text class="label" x="170" y="96" text-anchor="middle">混ぜた波長の幅 ＝ Δp</text>
-          <text class="label" x="20" y="100">波 ψ(x)</text>
-          <text class="label" x="318" y="178" text-anchor="end">位置 x</text>
-          <line class="mline" x1="20" y1="135" x2="320" y2="135"></line>
-          <polyline class="wave" id="mix-sum" points=""></polyline>
-          <line class="marr" id="dx-line" x1="120" y1="188" x2="220" y2="188"></line>
-          <polygon class="mhead" id="dx-h1" points="120,188 127,185 127,191"></polygon>
-          <polygon class="mhead" id="dx-h2" points="220,188 213,185 213,191"></polygon>
-          <text class="label" x="170" y="206" text-anchor="middle">かたまりの広がり ＝ Δx</text>
-        </svg>
-        <div class="diagram-caption">上：混ぜた波長の分布（棒1本が材料の波1つで、高さはその波長を混ぜた濃さ）。この山の横幅が <strong>Δp</strong> にあたる。下：それらを全部足し合わせてできる波。この山の広がりが <strong>Δx</strong>。混ぜる幅を広げると足し合わせた波は1か所に集中し、幅を狭めると波はどこまでも広がっていく――どちらか片方だけを小さくすることはできない</div>
       </div>
 
       <div class="dialogue-scene">
@@ -280,14 +222,14 @@
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">この上の棒グラフ、位置のときに描いた |ψ|² の山と形がそっくりですね。棒か曲線かの違いはありますけど、「どの値が出やすいか」を表しているという点では同じ役目に見えます。……ということは、位置に ψ(x) があったように、<strong>運動量のほうにも波動関数のようなものがある</strong>んですか？</div>
+          <div class="dialog-bubble">その「どの波長をどれだけ濃く混ぜたか」という分布、位置のときに描いた |ψ|² の山と同じ役目に聞こえます。どの値が出やすいかを表す山。……ということは、位置に ψ(x) があったように、<strong>運動量のほうにも波動関数のようなものがある</strong>んですか？</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">あるよ。ふつう <strong>φ(p)</strong>（ファイ）と書いて、<strong>|φ(p)|² が運動量の確率の濃さ</strong>を表す。ψ(x) と完全に対をなす相棒だ。ただし ψ に p を代入したものではなくて、まったく別の関数でね。ψ(x) が「どの場所にどれだけいるか」を、φ(p) が「どの波長をどれだけ混ぜたか」を語っている。<strong>同じ状態を、場所の言葉で書くか、波長の言葉で書くかの違い</strong>なんだ。上の図の棒の高さが、まさに |φ(p)|² だよ。そしてここが大事なところ。<strong>Δx が |ψ(x)|² の広がりだったように、Δp の本当の意味は「|φ(p)|² の広がり」</strong>なんだ。2つは完全に対等で、証明したい Δx·Δp ≥ ℏ/2 は「<strong>ψ と φ の両方を同時に細くはできない</strong>」と言い換えられる。上の図がまさにそれを描いているね。</div>
+          <div class="dialog-bubble">あるよ。ふつう <strong>φ(p)</strong>（ファイ）と書いて、<strong>|φ(p)|² が運動量の確率の濃さ</strong>を表す。ψ(x) と完全に対をなす相棒だ。ただし ψ に p を代入したものではなくて、まったく別の関数でね。ψ(x) が「どの場所にどれだけいるか」を、φ(p) が「どの波長をどれだけ混ぜたか」を語っている。<strong>同じ状態を、場所の言葉で書くか、波長の言葉で書くかの違い</strong>なんだ。そしてここが大事なところ。<strong>Δx が |ψ(x)|² の広がりだったように、Δp の本当の意味は「|φ(p)|² の広がり」</strong>なんだ。2つは完全に対等で、証明したい Δx·Δp ≥ ℏ/2 は「<strong>ψ と φ の両方を同時に細くはできない</strong>」と言い換えられる。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -440,71 +382,14 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">波といえば、量子力学の教室で出てきた<strong>正弦波</strong>――山と谷が同じ間隔でどこまでも続く、いちばんきれいな波です。それを式で書くなら、複素数の教室で習った cos が使えますね。cos θ は「角度θへ長さ1進んだときの<strong>横の距離</strong>」でしたから、角度のところに kx を入れて <strong>cos(kx)</strong>。kx が 2π 増えるごと――つまり x が 2π/k 進むごとに同じ値に戻るので、ちゃんと波長 2π/k の波になります。これでは駄目なんですか？</div>
+          <div class="dialog-bubble">それもシュレディンガー方程式の教室でやりました。最初の候補は <strong>cos(kx)</strong>――x が 2π/k 進むごとに同じ値に戻るので、波長 2π/k の波にはなります。でも、運動量がぴったり決まった波では位置の情報が完全に失われるはずなのに、2乗した cos²(kx) は場所ごとに濃くなったり薄くなったりする。「|ψ|² がどこでも同じ濃さ」という検査に不合格でした。合格するのは複素数の平面波 <strong>e<sup>ikx</sup>＝cos kx＋i sin kx</strong>。単位円の上を回る数ですから、<strong>絶対値はずっと1のまま、向きだけが回る</strong>。確率の濃さはどこでも1で完全に一様、それでいて向きは x が 2π/k 進むごとに一回転して、波長 2π/k でちゃんと繰り返します。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">最有力の第一候補だね。でも量子の波には、守るべき掟がひとつある。|ψ|² は「見つかる確率の濃さ」だ、という掟だよ。そして量子力学の教室で確かめたとおり、<strong>運動量がぴったり決まった波では、位置の情報は完全に失われる</strong>のだった。ということは、この波の |ψ|² には、他と区別できる特別な場所があってはいけない。<strong>どこを見ても同じ濃さ</strong>でなければならないんだ。この検査に、cos(kx) は合格できるかな。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">検査してみます。cos は ＋1 と −1 の間で上下するので、2乗した cos²(kx) は 0 と 1 の間で波打ちます。<strong>一様ではありません</strong>……不合格です。必要なのは、<strong>波として繰り返すのに、絶対値はどこでも同じ</strong>という関数……。でも、そんなものがあるでしょうか。上下に振れる以上、振れたぶんだけ絶対値も変わってしまう気がします。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">いい行き詰まり方だ。<strong>実数の目盛りの上を探しているかぎり、見つからない</strong>よ。実数が持っているのは<strong>値ひとつ</strong>きりだからね。波であるためには値が動かなければならないし、値が動けば絶対値も一緒に動いてしまう。<strong>絶対値を止めたまま動かせるものが、実数には無い</strong>んだ。……ところが<strong>複素数なら、「絶対値」と「向き」の2つを持っている</strong>。複素数の教室で出会った <strong>e<sup>iθ</sup>＝cos θ＋i sin θ</strong>。あれは単位円の上を回る数で、<strong>絶対値はずっと 1 のまま、向きだけがぐるぐる変わる</strong>。角度 θ のところに kx を入れれば、<strong>ψ(x)＝e<sup>ikx</sup>＝cos kx＋i sin kx</strong>。検査してみよう。|e<sup>ikx</sup>|² は単位円上の点の「絶対値の2乗」で、半径はずっと 1 だから、確率の濃さは<strong>どこでも 1 で完全に一様</strong>――合格だ。それでいて向きは、x が 2π/k 進むごとにちょうど一回転して元に戻るから、波長 2π/k でちゃんと繰り返す。<strong>波打つのは「向き」だけで、絶対値は一定</strong>。この波を<strong>平面波</strong>と呼ぶ。波動関数が複素数なのは飾りではなくて、「運動量が決まっているのに、場所の手がかりはない」という物理の要請が複素数を必要とするんだ。</div>
-        </div>
-      </div>
-
-      <div class="diagram-box">
-        <svg class="kq-svg" id="pw-svg" viewBox="0 0 340 200" width="100%" role="img" aria-label="左：複素数平面の単位円の上を、eのikx乗の値を表す矢印が回転する。右：各xでの実部を並べると、波長2π/kで繰り返すコサインの波が現れる。回転と波の上の点が同期して動くアニメーション">
-          <text class="strong" x="14" y="20">値は単位円を回る</text>
-          <text class="strong" x="150" y="20">実部を並べると、波になる</text>
-          <line class="base" x1="62" y1="52" x2="62" y2="142"></line>
-          <line class="base" x1="16" y1="96" x2="108" y2="96"></line>
-          <text class="label" x="68" y="62">実</text>
-          <text class="label" x="98" y="112">虚</text>
-          <circle cx="62" cy="96" r="38" fill="none" stroke="var(--muted)" stroke-width="1.5"></circle>
-          <line class="base" x1="120" y1="96" x2="332" y2="96"></line>
-          <polyline id="pw-curve" class="wave" points=""></polyline>
-          <line id="pw-conn" x1="0" y1="0" x2="0" y2="0" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"></line>
-          <line id="pw-arrow" x1="62" y1="96" x2="62" y2="58" stroke="#b5504a" stroke-width="2"></line>
-          <circle id="pw-cpt" cx="62" cy="58" r="4" fill="#b5504a"></circle>
-          <circle id="pw-wpt" cx="120" cy="58" r="4" fill="var(--gold-dark)"></circle>
-          <line class="kq-lam" x1="120" y1="44" x2="204" y2="44" stroke="var(--muted)" stroke-width="1.5"></line>
-          <polygon fill="var(--muted)" points="120,44 127,41 127,47"></polygon>
-          <polygon fill="var(--muted)" points="204,44 197,41 197,47"></polygon>
-          <text class="label" x="212" y="48">波長 λ＝2π/k</text>
-          <text class="label" x="300" y="112">x</text>
-          <text class="label" x="62" y="162" text-anchor="middle">矢印の長さはいつも1</text>
-          <text class="label" x="62" y="178" text-anchor="middle">→ |ψ|² はどこでも一様</text>
-        </svg>
-        <div class="diagram-caption">平面波 e<sup>ikx</sup> の姿。左：x が進むにつれ、e<sup>ikx</sup> の値（矢印）は複素数平面の単位円の上を回り続ける（見やすいように実軸を縦向きに描いた）。矢印の<strong>長さは変わらず、向きだけ</strong>が回るので、確率の濃さ |ψ|² はどこでも一様――位置の手がかりはどこにもない。右：各 x での実部＝矢印の縦成分を並べると、波長 λ＝2π/k で繰り返すコサインの波が現れる。回転が速い（k が大きい）ほど波長は短く、p＝ℏk の運動量は大きい</div>
-      </div>
-
-      <div class="dialogue-scene">
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">図で見ると一目ですね。矢印は<strong>長さを変えずに向きだけ回っていて</strong>、その実部を並べるとちゃんとコサインの波が現れる。波打っているのは「向き」だけで、絶対値はずっと動いていない。……波動関数が複素数なのは飾りではない、というのはこういうことなんですね。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">その通り。そして e<sup>ikx</sup> には、<strong>微分すると自分自身の ik 倍になる</strong>、という美しい性質がある。これは複素数の教室で説明したとおりだよ。<strong>e というのは、そうなるように選ばれた数</strong>だった――2<sup>x</sup> や 10<sup>x</sup> では増える速さが今の量のちょうど1倍にならなくて、ぴったり1倍になる底を探したら e＝2.718… が出てきた、あの話だね。傾きが自分の高さに比例する、成長する関数の性質だ。さっききみが言った「傾き ÷ もとの値」を、この波でやってみるとどうなるかな。ψ′ ÷ ψ ＝ ik ――波の高さがきれいに消えて、<strong>波数 k だけが残る</strong>。求めていた比が、本当に細かさだけを取り出したわけだ。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
+          <div class="dialog-bubble">そう。波打つのは「向き」だけで、絶対値は動かない――波動関数が複素数なのは飾りではない、という話だったね。そしてこの e<sup>ikx</sup> には、<strong>微分すると自分自身の ik 倍になる</strong>という性質があるのだった。e は、傾きが自分の高さのちょうど1倍になるように選ばれた数だからね。さっききみが言った「傾き ÷ もとの値」をこの波でやってみると、ψ′ ÷ ψ ＝ ik――波の高さがきれいに消えて、<strong>波数 k だけが残る</strong>。求めていた比が、本当に細かさだけを取り出したわけだ。ここからが見どころ。微分に −iℏ という係数を付けて、平面波に施してごらん。</div>
         </div>
       </div>
 
@@ -734,59 +619,6 @@
 
 <script src="js/progress.js"></script>
 <script>
-  // 平面波 e^(ikx)：単位円上の回転と、実部のコサイン波の同期アニメーション
-  (function () {
-    var REDUCED_MOTION = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var svg = document.getElementById("pw-svg");
-    if (!svg) return;
-    var CX = 62, CY = 96, R = 38;          // 単位円
-    var X0 = 120, X1 = 332, LAM = 84;      // 波の描画範囲と波長(px)
-    var K = 2 * Math.PI / LAM;
-
-    // 静的なコサイン波（実部）を描く
-    var pts = [];
-    for (var x = X0; x <= X1; x += 2) {
-      pts.push(x + "," + (CY - R * Math.cos(K * (x - X0))).toFixed(1));
-    }
-    document.getElementById("pw-curve").setAttribute("points", pts.join(" "));
-
-    var arrow = document.getElementById("pw-arrow");
-    var cpt = document.getElementById("pw-cpt");
-    var wpt = document.getElementById("pw-wpt");
-    var conn = document.getElementById("pw-conn");
-
-    function draw(xs) {
-      var th = K * (xs - X0);
-      var px = CX + R * Math.sin(th);
-      var py = CY - R * Math.cos(th);
-      var wy = CY - R * Math.cos(th);
-      arrow.setAttribute("x2", px.toFixed(1)); arrow.setAttribute("y2", py.toFixed(1));
-      cpt.setAttribute("cx", px.toFixed(1)); cpt.setAttribute("cy", py.toFixed(1));
-      wpt.setAttribute("cx", xs.toFixed(1)); wpt.setAttribute("cy", wy.toFixed(1));
-      conn.setAttribute("x1", px.toFixed(1)); conn.setAttribute("y1", py.toFixed(1));
-      conn.setAttribute("x2", xs.toFixed(1)); conn.setAttribute("y2", wy.toFixed(1));
-    }
-
-    if (REDUCED_MOTION) { draw(X0 + 30); return; }
-
-    var running = true;
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        running = entries[0].isIntersecting;
-      }).observe(svg);
-    }
-    var last = 0;
-    function loop(ms) {
-      if (running && ms - last > 33) {  // 約30fps
-        last = ms;
-        var t = (ms / 1000 * 40) % (X1 - X0);  // 毎秒40pxでxが進む
-        draw(X0 + t);
-      }
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-  })();
-
   // 波長の長い波・短い波を描く（静止画）
   (function () {
     function makePath(yc, amp, wavelen, x0, x1) {
@@ -801,102 +633,6 @@
     var ws = document.getElementById("wave-short");
     if (wl) wl.setAttribute("d", makePath(55, 22, 150, 15, 305));
     if (ws) ws.setAttribute("d", makePath(150, 22, 34, 15, 305));
-  })();
-</script>
-<script>
-  // 「混ぜる幅」と「かたまりの広がり」のシーソーを動かす
-  (function () {
-    var svg = document.getElementById("mix-svg");
-    if (!svg) return;
-    var REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    var N = 11;                       // 混ぜる材料の本数
-    var K0 = 2 * Math.PI / 26;        // 中心の波数（波長26px）
-    var SMIN = 0.036, SMAX = 0.30;    // 混ぜる幅の下限・上限（下限は矢印が画面内に収まる値）
-    var XC = 170, X0 = 20, X1 = 320;  // 描画範囲と中心
-    var KSCALE = 620;                 // 波数の差 → 画面px
-
-    var barsG = document.getElementById("mix-bars");
-    var bars = [];
-    for (var j = 0; j < N; j++) {
-      var r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      r.setAttribute("class", "mixbar");
-      r.setAttribute("width", 5);
-      r.setAttribute("y", 36);
-      r.setAttribute("height", 26);
-      barsG.appendChild(r);
-      bars.push(r);
-    }
-    var sumEl = document.getElementById("mix-sum");
-
-    function arrow(idLine, idH1, idH2, cx, half, y) {
-      var a = cx - half, b = cx + half;
-      var L = document.getElementById(idLine);
-      L.setAttribute("x1", a.toFixed(1)); L.setAttribute("x2", b.toFixed(1));
-      document.getElementById(idH1).setAttribute("points",
-        a.toFixed(1) + "," + y + " " + (a + 7).toFixed(1) + "," + (y - 3) + " " + (a + 7).toFixed(1) + "," + (y + 3));
-      document.getElementById(idH2).setAttribute("points",
-        b.toFixed(1) + "," + y + " " + (b - 7).toFixed(1) + "," + (y - 3) + " " + (b - 7).toFixed(1) + "," + (y + 3));
-    }
-
-    function draw(S) {
-      var ks = [], ws = [], wsum = 0, wmax = 0, j;
-      for (j = 0; j < N; j++) {
-        var k = K0 - S / 2 + (S * j) / (N - 1);
-        var u = 2 * j / (N - 1) - 1;      // −1 … ＋1
-        var w = Math.exp(-1.6 * u * u);   // 中心の波長ほど濃く混ぜる
-        ks.push(k); ws.push(w); wsum += w;
-        if (w > wmax) wmax = w;
-        bars[j].setAttribute("x", (XC + (k - K0) * KSCALE - 2.5).toFixed(1));
-      }
-      // 棒の高さは |φ(p)|²（混ぜた濃さの2乗）に比例させる
-      for (j = 0; j < N; j++) {
-        var h = Math.max(1.5, 26 * Math.pow(ws[j] / wmax, 2));
-        bars[j].setAttribute("height", h.toFixed(1));
-        bars[j].setAttribute("y", (62 - h).toFixed(1));
-      }
-      arrow("dp-line", "dp-h1", "dp-h2", XC, Math.max(6, S / 2 * KSCALE), 78);
-
-      var pts = [];
-      for (var x = X0; x <= X1; x += 2) {
-        var sum = 0;
-        for (var i = 0; i < N; i++) sum += ws[i] * Math.cos(ks[i] * (x - XC));
-        pts.push(x + "," + (135 - 30 * (sum / wsum)).toFixed(1));
-      }
-      sumEl.setAttribute("points", pts.join(" "));
-      // かたまりの広がりは、包絡線が 1/e まで落ちる位置で測る。
-      // 刻みのまま採用すると矢印がカクつくので、またいだ2点のあいだを補間する
-      function envelope(d) {
-        var e = 0;
-        for (var m = 0; m < N; m++) e += ws[m] * Math.cos((ks[m] - K0) * d);
-        return e / wsum;
-      }
-      var half = 148, prevD = 0, prevE = 1;
-      for (var d = 1.5; d <= 148; d += 1.5) {
-        var e = envelope(d);
-        if (e < 0.368) {
-          half = prevD + (d - prevD) * (prevE - 0.368) / (prevE - e);
-          break;
-        }
-        prevD = d; prevE = e;
-      }
-      arrow("dx-line", "dx-h1", "dx-h2", XC, Math.max(10, half), 188);
-    }
-
-    if (REDUCED) { draw((SMIN + SMAX) / 2); return; }
-
-    var running = true;
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (e) { running = e[0].isIntersecting; }).observe(svg);
-    }
-    function loop(ms) {
-      if (running) {                     // 毎フレーム描いて動きを滑らかに保つ
-        var u = 0.5 - 0.5 * Math.cos(ms / 1500);
-        draw(SMIN + (SMAX - SMIN) * u);
-      }
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
   })();
 </script>
 <script>KQ.initStagePage(3);</script>
